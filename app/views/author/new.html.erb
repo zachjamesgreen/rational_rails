@@ -1,0 +1,9 @@
+<form action="/author/new" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Create a new author</p>
+  <label for="name">Name</label>
+  <input type='text' id="name" name='author[name]'/><br/>
+  <label for="admin">Admin?</label>
+  <input type="checkbox" id="admin" name="author[admin]"/><br/>
+  <input type='submit'/>
+</form>
