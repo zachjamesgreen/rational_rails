@@ -6,6 +6,10 @@ class AuthorController < ApplicationController
   def new
   end
 
+  def show
+    @author = Author.find(params[:id])
+  end
+
   def create
     admin = params[:author][:admin] == 'on' ? true : false
     author = Author.create({name: params[:author][:name], admin: admin})
