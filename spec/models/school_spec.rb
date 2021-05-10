@@ -9,7 +9,7 @@ RSpec.describe School, type: :model do
       end
 
       it 'returns No if the school is not remote' do
-        school = School.create!(name: 'Turing', is_remote: true, school_code: 1)
+        school = School.create!(name: 'Turing', is_remote: false, school_code: 1)
         expect(school.remote?).to eq 'No'
       end
     end
