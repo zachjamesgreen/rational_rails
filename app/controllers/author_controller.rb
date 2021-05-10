@@ -22,6 +22,9 @@ class AuthorController < ApplicationController
   end
 
   def update
+    author = Author.find(params[:id])
+    author.update!({name: params[:author][:name], admin: admin})
+    redirect_to "/author/#{author.id}"
   end
 
   def delete
