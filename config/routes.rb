@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get '/author/new', to: 'author#new'
   get 'author/:id', to: 'author#show'
   post '/author/new', to: 'author#create'
-  patch '/author/update', to: 'author#update'
+  patch '/author/:id', to: 'author#update'
   delete '/author/delete', to: 'author#delete'
-  get '/author/edit', to: 'author#edit'
+  # get '/author/edit', to: 'author#edit'
+  get '/author/:id/edit', to: 'author#edit'
   get 'author/:id/stories', to: 'author#show_with_stories'
 end
