@@ -23,7 +23,8 @@ class AuthorController < ApplicationController
 
   def update
     author = Author.find(params[:id])
-    author.update!({name: params[:author][:name], admin: admin})
+    admin = params[:author][:admin] == 'on' ? true : false
+    author.update({name: params[:author][:name], admin: admin})
     redirect_to "/author/#{author.id}"
   end
 
