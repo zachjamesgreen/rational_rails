@@ -1,0 +1,14 @@
+<h1><%= @author.name %></h1>
+
+<p>Admin: <%= @author.admin? %></p>
+<p>Rating: <%= @author.rating %></p>
+<p>Created At: <%= @author.created_at %></p>
+<p>Updated At: <%= @author.updated_at %></p>
+<h3>Stories</h3>
+<% @author.stories.each do |story| %>
+  <ul>
+    <li>Name: <%= story.name %></li>
+    <li>Published?: <%= story.published %></li>
+    <li>Likes: <%= story.likes %></li>
+  </ul>
+<% end %>

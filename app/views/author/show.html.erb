@@ -1,16 +1,6 @@
 <h1><%= @author.name %></h1>
 
-<table>
-  <tr>
-    <th>Admin</th>
-    <th>Rating</th>
-    <th>Created At</th>
-    <th>Updated At</th>
-  </tr>
-  <tr>
-    <td><%= @author.admin? %></td>
-    <td><%= @author.rating %></td>
-    <td><%= @author.created_at %></td>
-    <td><%= @author.updated_at %></td>
-  </tr>
-</table>
+<p>Admin: <%= @author.admin? %></p>
+<p>Rating: <%= @author.rating %></p>
+<p>Created At: <%= @author.created_at %></p>
+<p>Updated At: <%= @author.updated_at %></p>

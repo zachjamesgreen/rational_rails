@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_014632) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.boolean "admin"
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_014632) do
   create_table "stories", force: :cascade do |t|
     t.string "name"
     t.boolean "published"
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
