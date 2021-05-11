@@ -3,7 +3,7 @@ class CreateSchools < ActiveRecord::Migration[5.2]
     create_table :schools do |t|
       t.string :name
       t.boolean :is_remote, default: false
-      t.integer :school_code, unique: true
+      t.integer :school_code
 
       t.timestamps
     end
