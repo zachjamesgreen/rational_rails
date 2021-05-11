@@ -1,5 +1,5 @@
 <h1>Authors</h1>
 <a href="/author/new">Create an Author</a>
 <% @authors.each do |author| %>
-  <p><a href="/author/<%= author.id %>"><%= author.name %></a>  Created At: <%= author.created_at %></p>
+  <p><a href="/author/<%= author.id %>"><%= author.name %></a>  Created At: <%= author.created_at %> <a href="/author/<%= author.id %>/edit">Update</a></p>
 <% end %>

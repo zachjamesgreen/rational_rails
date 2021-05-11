@@ -5,6 +5,7 @@
     <li>Likes: <%= story.likes %></li>
     <li>Published: <%= story.published %></li>
     <li>Author: <%= story.author.name %></li>
+    <li><a href="/story/<%= story.id %>/edit">Update</a></li>
   </ul>
 
 <% end %>

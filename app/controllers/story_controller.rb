@@ -1,6 +1,6 @@
 class StoryController < ApplicationController
   def index
-    @stories = Story.all
+    @stories = Story.all.where(published: true)
   end
 
   def create
