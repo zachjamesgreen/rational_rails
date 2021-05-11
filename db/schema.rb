@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_001234) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
-    t.string "degree"
     t.boolean "is_alumni", default: false
     t.integer "badge_code"
     t.bigint "school_id"
