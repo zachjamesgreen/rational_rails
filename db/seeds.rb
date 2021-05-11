@@ -36,18 +36,19 @@ end
 
 10.times do
   author = Author.create!(FactoryBot::attributes_for(:author))
-  3.times do
+  t = rand(11)
+  t.times do
     attrs = FactoryBot::attributes_for(:story)
     attrs[:author] = author
     Story.create!(attrs)
   end
 end
 
-20.times do
-  school = School.create!(FactoryBot::attributes_for(:school))
-  rand(50..75).times do
-    attrs = FactoryBot::attributes_for(:student)
-    attrs[:school] = school
-    Student.create!(attrs)
-  end
-end
+# 20.times do
+#   school = School.create!(FactoryBot::attributes_for(:school))
+#   rand(50..75).times do
+#     attrs = FactoryBot::attributes_for(:student)
+#     attrs[:school] = school
+#     Student.create!(attrs)
+#   end
+# end

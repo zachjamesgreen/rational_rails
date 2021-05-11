@@ -1,5 +1,6 @@
 <h1><%= @author.name %></h1>
 <a href="/author/<%= @author.id %>/edit">Update</a>
+<%= link_to 'Delete', "/author/#{@author.id}", method: :delete, data: {confirm: 'Are your sure?'} %>
 
 <p>Admin: <%= @author.admin? %></p>
 <p>Rating: <%= @author.rating %></p>

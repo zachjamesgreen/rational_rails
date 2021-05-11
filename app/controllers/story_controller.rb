@@ -1,6 +1,6 @@
 class StoryController < ApplicationController
   def index
-    @stories = Story.all
+    @stories = Story.all.where(published: true)
   end
 
   def create
@@ -8,9 +8,6 @@ class StoryController < ApplicationController
     published = params[:story][:published].nil? ? false : true
     Story.create(name: params[:story][:name], likes: params[:story][:likes], published: published, author: author)
     redirect_to "/author/#{author.id}/stories"
-  end
-
-  def delete
   end
 
   def edit
@@ -27,6 +24,14 @@ class StoryController < ApplicationController
 
   def update
     story = Story.find(params[:id])
-    published
+    published = params[:story][:published].nil? ? false : true
+    story.update(name: params[:story][:name], likes: params[:story][:likes], published: published)
+    redirect_to "/story/#{story.id}"
+  end
+
+  def delete
+    story = Story.find(params[:id])
+    story.delete
+    redirect_to '/story'
   end
 end

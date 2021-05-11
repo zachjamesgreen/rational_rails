@@ -5,13 +5,21 @@
 <p>Created At: <%= @author.created_at %></p>
 <p>Updated At: <%= @author.updated_at %></p>
 <h3>Stories</h3>
-<a href="/author/<%= @author.id %>/story/new">Create a Story for the Author</a>
-<% @author.stories.each do |story| %>
+<a href="/author/<%= @author.id %>/story/new">Create a Story for the Author</a><br/>
+<a href="/author/<%= @author.id %>/stories?sort_by_name=true">Sort By Name</a>
+<form action="/author/<%= @author.id %>/stories" method="get">
+  <label for="greater_than">Filter by likes greater than</label>
+  <input type="number" name="greater_than" id="greater_than">
+  <input type="submit">
+</form>
+<% @stories.each do |story| %>
   <a href="/story/<%= story.id %>">
     <ul>
       <li>Name: <%= story.name %></li>
       <li>Published?: <%= story.published %></li>
       <li>Likes: <%= story.likes %></li>
+      <li><a href="/story/<%= story.id %>/edit">Update</a></li>
+      <li><%= link_to 'Delete', "/story/#{story.id}", method: :delete, data: {confirm: 'Are your sure?'} %></li>
     </ul>
   </a>
 <% end %>
