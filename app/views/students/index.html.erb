@@ -1,7 +1,6 @@
 <h1>List of All Students</h1>
 
 <ul>
-    <a href='/students/new'>Create new Student</a>
     <%@students.each do |student| %>
     <li>
       <a href=<%="/students/#{student.id}"%>><%=student.name%></a>
