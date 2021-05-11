@@ -5,10 +5,13 @@
 <p>Created At: <%= @author.created_at %></p>
 <p>Updated At: <%= @author.updated_at %></p>
 <h3>Stories</h3>
+<a href="/author/<%= @author.id %>/story/new">Create a Story for the Author</a>
 <% @author.stories.each do |story| %>
-  <ul>
-    <li>Name: <%= story.name %></li>
-    <li>Published?: <%= story.published %></li>
-    <li>Likes: <%= story.likes %></li>
-  </ul>
+  <a href="/story/<%= story.id %>">
+    <ul>
+      <li>Name: <%= story.name %></li>
+      <li>Published?: <%= story.published %></li>
+      <li>Likes: <%= story.likes %></li>
+    </ul>
+  </a>
 <% end %>
