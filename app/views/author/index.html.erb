@@ -1,5 +1,24 @@
 <h1>Authors</h1>
 <a href="/author/new">Create an Author</a>
+<a href="/authors?sort_by_stories=true">Sort by Stories</a>
+<form action="/authors" method="get">
+  <label for="exact_match"></label>
+  <input type="text" id="exact_match" name="exact_match" placeholder="Exact Match for Name">
+  <input type="submit">
+</form>
+<form action="/authors" method="get">
+  <label for="partial_match"></label>
+  <input type="text" id="partial_match" name="partial_match" placeholder="Partial Match for Name">
+  <input type="submit">
+</form>
 <% @authors.each do |author| %>
-  <p><a href="/author/<%= author.id %>"><%= author.name %></a>  Created At: <%= author.created_at %> <a href="/author/<%= author.id %>/edit">Update</a></p>
+  <p>
+    <a href="/author/<%= author.id %>"><%= author.name %></a>
+    Created At: <%= author.created_at %>
+    <a href="/author/<%= author.id %>/edit">Update</a>
+    <%= link_to 'Delete', "/author/#{author.id}", method: :delete, data: {confirm: 'Are your sure?'} %>
+    <% if params[:sort_by_stories] %>
+      Stories: <%= author.stories.size %>
+    <% end %>
+  </p>
 <% end %>

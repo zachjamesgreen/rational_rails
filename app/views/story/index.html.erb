@@ -1,11 +1,21 @@
 <a href="/story/new">Create a Story</a>
+<form action="/story" method="get">
+  <label for="exact_match"></label>
+  <input type="text" id="exact_match" name="exact_match" placeholder="Exact Match for Name">
+  <input type="submit">
+</form>
+<form action="/story" method="get">
+  <label for="partial_match"></label>
+  <input type="text" id="partial_match" name="partial_match" placeholder="Partial Match for Name">
+  <input type="submit">
+</form>
 <% @stories.each do |story| %>
   <h3><a href="/story/<%= story.id %>"><%= story.name %></a></h3>
   <ul>
     <li>Likes: <%= story.likes %></li>
     <li>Published: <%= story.published %></li>
     <li>Author: <%= story.author.name %></li>
-    <li><a href="/story/<%= story.id %>/edit">Update</a></li>
+    <li><a href="/story/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/story/#{story.id}", method: :delete, data: {confirm: 'Are your sure?'} %></li>
   </ul>
 
 <% end %>

@@ -10,9 +10,6 @@ class StoryController < ApplicationController
     redirect_to "/author/#{author.id}/stories"
   end
 
-  def delete
-  end
-
   def edit
     @story = Story.find(params[:id])
   end
@@ -30,5 +27,11 @@ class StoryController < ApplicationController
     published = params[:story][:published].nil? ? false : true
     story.update(name: params[:story][:name], likes: params[:story][:likes], published: published)
     redirect_to "/story/#{story.id}"
+  end
+
+  def delete
+    story = Story.find(params[:id])
+    story.delete
+    redirect_to '/story'
   end
 end
