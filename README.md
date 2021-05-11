@@ -12,6 +12,8 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+ * [Schema Layout for Schools/Students](https://dbdesigner.page.link/NfGJS5N1wXfit2hSA)
+
 
 * Database initialization
 
