@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_014632) do
+ActiveRecord::Schema.define(version: 2021_05_10_230022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2021_05_04_014632) do
     t.string "name"
     t.boolean "admin"
     t.integer "rating", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_remote", default: false
+    t.integer "school_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,5 +41,16 @@ ActiveRecord::Schema.define(version: 2021_05_04_014632) do
     t.index ["author_id"], name: "index_stories_on_author_id"
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_alumni", default: false
+    t.integer "badge_code"
+    t.bigint "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_students_on_school_id"
+  end
+
   add_foreign_key "stories", "authors"
+  add_foreign_key "students", "schools"
 end
