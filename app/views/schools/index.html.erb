@@ -2,7 +2,7 @@
 <ul>
     <%@schools.each do |school| %>
     <li>
-      <a href=<%="/schools/#{school.id}"%>><%=school.name%></a>
+      <a href=<%="/schools/#{school.id}"%>><%="#{school.name} Created at: #{school.created_at}"%></a>
     </li>
     <%end%>
 </ul>
