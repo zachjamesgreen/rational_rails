@@ -9,10 +9,8 @@ Rails.application.routes.draw do
 
   get '/story', to: 'story#index'
   get '/story/:id',to: 'story#show'
-  # get '/story/delete'
   get '/story/:id/edit', to: 'story#edit'
-  # get '/story/new'
-  # get '/story/update'
+  post '/story/:id', to: 'story#update'
 
   get 'author/:id/story/new', to: 'story#new'
   post 'author/:id/story', to: 'story#create'
@@ -23,7 +21,6 @@ Rails.application.routes.draw do
   post '/author/new', to: 'author#create'
   post '/author/:id', to: 'author#update'
   delete '/author/delete', to: 'author#delete'
-  # get '/author/edit', to: 'author#edit'
   get '/author/:id/edit', to: 'author#edit'
   get 'author/:id/stories', to: 'author#show_with_stories'
 end

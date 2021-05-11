@@ -14,7 +14,7 @@ class StoryController < ApplicationController
   end
 
   def edit
-    story = Story.find(params[:id])
+    @story = Story.find(params[:id])
   end
 
   def new
@@ -26,5 +26,7 @@ class StoryController < ApplicationController
   end
 
   def update
+    story = Story.find(params[:id])
+    published
   end
 end
