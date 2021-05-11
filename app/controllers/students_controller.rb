@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   def index
-    @students = Student.order(:name)
+    @students = Student.order(:name).where(is_alumni: true)
   end
 
   def new
