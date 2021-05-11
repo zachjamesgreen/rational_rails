@@ -36,3 +36,33 @@
 .navbar-li a:hover {
   background-color: #111;
 }
+
+.delete-form {
+  display: inline-block;
+}
+
+a.custom-button {
+  text-decoration: none;
+  text-align: center;
+  color: blue;
+  display: inline-block;
+  font-size: 16px;
+}
+
+a.custom-button:hover {
+  background-color: grey;
+  color: white;
+}
+
+.custom-button {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.custom-button:hover {
+  background-color: grey;
+  color: white;
+}
