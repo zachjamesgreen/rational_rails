@@ -1,8 +1,8 @@
 <h2>List of Students for <a href=<%="/schools/#{@school.id}"%>><%=@school.name%></a></h2>
 <form action='<%="/schools/#{@school.id}/students"%>' method='POST'>
   <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <label for='count'>Limit Count To</label>
-  <input type='number' name='count' value='<%=@students.count%>' />
+  <label for='count'>Get students older than </label>
+  <input type='number' name='age' />
   <input type='submit' value='Submit' />
 </form>
 <ul>

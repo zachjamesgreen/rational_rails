@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
   def create
     attrs = params[:student]
     Student.create(name: attrs[:name],
-                   badge_code: attrs[:badge_code],
+                   age: attrs[:age],
                    is_alumni: attrs[:is_alumni],
                    degree: attrs[:degree],
                    school_id: params[:id])
@@ -25,7 +25,6 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     @student.update_attributes(student_params)
-    @student.save
     redirect_to "/students/#{params[:id]}"
   end
 
@@ -47,7 +46,7 @@ class StudentsController < ApplicationController
 
   def student_params
     if params[:student]
-      params.require(:student).permit(:name, :badge_code, :degree, :is_alumni)
+      params.require(:student).permit(:name, :age, :degree, :is_alumni)
     end
   end
 

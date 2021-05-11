@@ -22,7 +22,6 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     @school.update_attributes(school_params)
-    @school.save
     redirect_to "/schools/#{params[:id]}"
   end
 
@@ -36,9 +35,9 @@ class SchoolsController < ApplicationController
   end
 
   def students
-    if params[:count]
+    if params[:age]
       @school = School.find(params[:id])
-      @students = @school.students.limit(params[:count])
+      @students = @school.students.where("age > #{params[:age]}")
     else
       @school = School.find(params[:id])
       @students = @school.students
