@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/story', to: 'story#index'
   get '/story/:id',to: 'story#show'
   # get '/story/delete'
-  # get '/story/edit'
+  get '/story/:id/edit', to: 'story#edit'
   # get '/story/new'
   # get '/story/update'
 

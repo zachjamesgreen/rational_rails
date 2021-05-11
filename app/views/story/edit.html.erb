@@ -1,2 +1,9 @@
-<h1>Story#edit</h1>
-<p>Find me in app/views/story/edit.html.erb</p>
+<form action="/story/<%= @author.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Edit this author</p>
+  <label for="name">Name</label>
+  <input type='text' id="name" name='author[name]' value='<%= @author.name %>'/><br/>
+  <label for="admin">Admin?</label>
+  <input type="checkbox" id="admin" name="author[admin]" <%= @author.admin? ? 'checked' : '' %>/><br/>
+  <input type='submit'/>
+</form>

@@ -5,13 +5,16 @@ class StoryController < ApplicationController
 
   def create
     author = Author.find(params[:id])
-    story = Story.create(name: params[:story][:name], likes: params[:story][:likes], published: params[:story][:published], author: author)
+    published = params[:story][:published].nil? ? false : true
+    Story.create(name: params[:story][:name], likes: params[:story][:likes], published: published, author: author)
+    redirect_to "/author/#{author.id}/stories"
   end
 
   def delete
   end
 
   def edit
+    story = Story.find(params[:id])
   end
 
   def new
