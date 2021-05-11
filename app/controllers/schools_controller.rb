@@ -48,7 +48,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
     @current_degrees = @school.students.each_with_object([]) do |student, degrees|
       degrees << student.degree
-    end.sort
+    end.sort.uniq
   end
 
   private
