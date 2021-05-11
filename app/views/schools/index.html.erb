@@ -3,7 +3,7 @@
     <a href='/schools/new'>Create new School</a>
     <%@schools.each do |school| %>
     <li>
-      <a href=<%="/schools/#{school.id}"%>><%="#{school.name} Created at: #{school.created_at}"%></a>
+      <a href=<%="/schools/#{school.id}"%>><%="#{school.name}"%></a> <%="Created at: #{school.created_at}"%><a href='<%="/schools/#{school.id}/edit"%>'> Edit </a>
     </li>
     <%end%>
 </ul>
