@@ -23,7 +23,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
     @school.update_attributes(school_params)
     @school.save
-    redirect_to '/schools'
+    redirect_to "/schools/#{params[:id]}"
   end
 
   def edit
