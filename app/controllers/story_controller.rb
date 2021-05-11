@@ -4,6 +4,8 @@ class StoryController < ApplicationController
   end
 
   def create
+    author = Author.find(params[:id])
+    story = Story.create(name: params[:story][:name], likes: params[:story][:likes], published: params[:story][:published], author: author)
   end
 
   def delete
@@ -13,6 +15,7 @@ class StoryController < ApplicationController
   end
 
   def new
+    @author = Author.find(params[:id])
   end
 
   def show

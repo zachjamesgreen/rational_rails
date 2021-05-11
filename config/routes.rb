@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # get '/story/new'
   # get '/story/update'
 
+  get 'author/:id/story/new', to: 'story#new'
+  post 'author/:id/story', to: 'story#create'
 
   get '/authors', to: 'author#index'
   get '/author/new', to: 'author#new'
