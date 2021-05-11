@@ -19,6 +19,19 @@ FactoryBot.define do
     likes { rand(100) }
     published { rand(2) == 0 ? true : false }
   end
+
+  factory :school do
+    name { Faker::Educator.university }
+    is_remote { rand(2) == 0 }
+    school_code { rand(999999) }
+  end
+
+  factory :student do
+    name { Faker::FunnyName.three_word_name }
+    is_alumni { rand(2) == 0 }
+    degree { Faker::Educator.degree }
+    badge_code { rand(999999) }
+  end
 end
 
 10.times do
@@ -27,5 +40,14 @@ end
     attrs = FactoryBot::attributes_for(:story)
     attrs[:author] = author
     Story.create!(attrs)
+  end
+end
+
+20.times do
+  school = School.create!(FactoryBot::attributes_for(:school))
+  rand(50..75).times do
+    attrs = FactoryBot::attributes_for(:student)
+    attrs[:school] = school
+    Student.create!(attrs)
   end
 end
