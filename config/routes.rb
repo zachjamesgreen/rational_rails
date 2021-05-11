@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   post '/schools/new', to: 'schools#create'
   post '/schools/:id/students/new', to: 'students#create'
+  post '/schools/:id/students', to: 'schools#students'
 
   patch '/schools/:id/edit', to: 'schools#update'
   patch '/students/:id/edit', to: 'students#update'
