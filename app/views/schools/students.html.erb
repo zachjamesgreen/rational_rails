@@ -2,7 +2,7 @@
 <form action='<%="/schools/#{@school.id}/students"%>' method='POST'>
   <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
   <label for='count'>Limit Count To</label>
-  <input type='number' name='count' value='10' />
+  <input type='number' name='count' value='<%=@students.count%>' />
   <input type='submit' value='Submit' />
 </form>
 <ul>
