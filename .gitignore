@@ -30,3 +30,5 @@
 config/database.yml
 .idea
 coverage/
+
+db/seeds.rb
