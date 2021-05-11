@@ -36,7 +36,13 @@ class SchoolsController < ApplicationController
   end
 
   def students
-    @school = School.find(params[:id])
+    if params[:count]
+      @school = School.find(params[:id])
+      @students = @school.students.limit(params[:count])
+    else
+      @school = School.find(params[:id])
+      @students = @school.students
+    end
   end
 
   def degrees
