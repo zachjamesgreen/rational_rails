@@ -1,5 +1,6 @@
 <h1>List of All Schools</h1>
 <ul>
+    <a href='/schools/new'>Create new School</a>
     <%@schools.each do |school| %>
     <li>
       <a href=<%="/schools/#{school.id}"%>><%="#{school.name} Created at: #{school.created_at}"%></a>

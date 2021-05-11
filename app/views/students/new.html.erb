@@ -1,0 +1,17 @@
+<h2>Create new Student</h2>
+
+<form action='<%="/schools/#{@school_id}/students/new"%>' method='POST'>
+  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+  <label for='student[name]'>Student Name</label>
+  <input type='text' name='student[name]' /><br />
+  <label for='student[badge_code]'>Badge Code</label>
+  <input type='text' name='student[badge_code]' /><br />
+  <label for='student[degree]' name='student[degree]'>Student's Degree</label>
+  <input type='text' name='student[degree]' /><br />
+  <label for='student[is_alumni]'>Has Student Graduate?</label>
+  <select name='student[is_alumni]'>
+    <option value='false'>No</option>
+    <option value='true'>Yes</option>
+  </select><br />
+  <input type='submit' value='Create'/>
+</form>

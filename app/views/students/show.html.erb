@@ -4,3 +4,4 @@
 <h3>Student Badge Code: <%=@student.badge_code%></h3>
 <h3>Degree: <%=@student.degree%></h3>
 <h3>Graduated: <%=@student.has_graduated?%></h3>
+<a href='<%="/students/#{@student.id}/edit"%>'>Update Student</a>
