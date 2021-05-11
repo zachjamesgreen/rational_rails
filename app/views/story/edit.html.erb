@@ -1,9 +1,11 @@
-<!--<form action="/story/<%#= @story.id %>" method="post">-->
-<!--  <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">-->
-<!--  <p>Edit this author</p>-->
-<!--  <label for="name">Name</label>-->
-<!--  <input type='text' id="name" name='author[name]' value='<%#= @author.name %>'/><br/>-->
-<!--  <label for="admin">Admin?</label>-->
-<!--  <input type="checkbox" id="admin" name="author[admin]" <%#= @author.admin? ? 'checked' : '' %>/><br/>-->
-<!--  <input type='submit'/>-->
-<!--</form>-->
+<form action="/story/<%= @story.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Edit this author</p>
+  <label for="name">Name</label>
+  <input type='text' id="name" name='story[name]' value='<%= @story.name %>'/><br/>
+  <label for="admin">Published?</label>
+  <input type="checkbox" id="admin" name="story[published]" <%= @story.published ? 'checked' : '' %>/><br/>
+  <label for="likes">Likes</label>
+  <input type="number" id="likes" name="story[likes]" value="<%= @story.likes %>">
+  <input type='submit'/>
+</form>

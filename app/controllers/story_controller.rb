@@ -27,6 +27,8 @@ class StoryController < ApplicationController
 
   def update
     story = Story.find(params[:id])
-    published
+    published = params[:story][:published].nil? ? false : true
+    story.update(name: params[:story][:name], likes: params[:story][:likes], published: published)
+    redirect_to "/story/#{story.id}"
   end
 end
