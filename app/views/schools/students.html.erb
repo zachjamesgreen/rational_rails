@@ -1,4 +1,4 @@
-<h2>List of Students for <%=@school.name%></h2>
+<h2>List of Students for <a href=<%="/schools/#{@school.id}"%>><%=@school.name%></a></h2>
 
 <ul>
   <%@school.students.each do |student| %>

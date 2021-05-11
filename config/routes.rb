@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
 
+  get '/schools/new', to: 'schools#new'
+  get '/schools/:id/students/new', to: 'students#new'
   get '/schools/:id/students', to: 'schools#students'
+  get '/schools/:id/degrees', to: 'schools#degrees'
+  get '/schools/:id/edit', to: 'schools#edit'
   get '/schools/:id', to: 'schools#show'
   get '/schools', to: 'schools#index'
 
+  get '/students/:id/edit', to: 'students#edit'
   get '/students/:id', to: 'students#show'
   get '/students', to: 'students#index'
+
+  post '/schools/new', to: 'schools#create'
+  post '/schools/:id/students/new', to: 'students#create'
+
+  patch '/schools/:id/edit', to: 'schools#update'
+  patch '/students/:id/edit', to: 'students#update'
 
   get '/story', to: 'story#index'
   get '/story/:id',to: 'story#show'
