@@ -38,6 +38,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'capybara'
+  gem 'launchy' # save_and_open_page
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
