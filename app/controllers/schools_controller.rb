@@ -51,7 +51,7 @@ class SchoolsController < ApplicationController
 
   def school_params
     if params[:school]
-      params.require(:school).permit(:school, :name, :school_code, :is_remote)
+      params.require(:school).permit(:name, :school_code, :is_remote)
     end
   end
 end
