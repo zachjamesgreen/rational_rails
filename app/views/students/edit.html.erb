@@ -11,8 +11,7 @@
   <input type='text' name='student[degree]' value='<%=@student.degree%>'/><br />
   <label for='student[is_alumni]'>Has Student Graduate?</label>
   <select name='student[is_alumni]'>
-    <option value='false'>No</option>
-    <option value='true'>Yes</option>
+    <%=current_option(@student.is_alumni)%>
   </select><br />
   <input type='submit' value='Update'/>
 </form>
