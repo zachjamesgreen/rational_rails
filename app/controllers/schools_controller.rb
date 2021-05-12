@@ -7,11 +7,7 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    attrs = params[:school]
-    School.create(name: attrs[:name],
-                  school_code: attrs[:school_code],
-                  is_remote: attrs[:is_remote])
-
+    School.create(school_params)
     redirect_to '/schools'
   end
 

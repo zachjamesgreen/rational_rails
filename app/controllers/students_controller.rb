@@ -8,13 +8,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    attrs = params[:student]
-    Student.create(name: attrs[:name],
-                   age: attrs[:age],
-                   is_alumni: attrs[:is_alumni],
-                   degree: attrs[:degree],
-                   school_id: params[:id])
-
+    Student.create(student_params)
     redirect_to "/schools/#{params[:id]}/students"
   end
 
