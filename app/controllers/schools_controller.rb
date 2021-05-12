@@ -1,14 +1,14 @@
 class SchoolsController < ApplicationController
-  def index
-    @schools = School.order(created_at: :desc)
-  end
-
   def new
   end
 
   def create
     School.create(school_params)
     redirect_to '/schools'
+  end
+
+  def index
+    @schools = School.order(created_at: :desc)
   end
 
   def show

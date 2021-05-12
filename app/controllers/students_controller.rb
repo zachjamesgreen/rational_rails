@@ -1,8 +1,4 @@
 class StudentsController < ApplicationController
-  def index
-    @students = Student.order(:name).where(is_alumni: true)
-  end
-
   def new
     @school_id = params[:id]
   end
@@ -10,6 +6,10 @@ class StudentsController < ApplicationController
   def create
     Student.create(student_params)
     redirect_to "/schools/#{params[:id]}/students"
+  end
+
+  def index
+    @students = Student.order(:name).where(is_alumni: true)
   end
 
   def show
