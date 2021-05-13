@@ -1,18 +1,14 @@
 class SchoolsController < ApplicationController
-  def index
-    @schools = School.order(created_at: :desc)
-  end
-
   def new
   end
 
   def create
-    attrs = params[:school]
-    School.create(name: attrs[:name],
-                  school_code: attrs[:school_code],
-                  is_remote: attrs[:is_remote])
-
+    School.create(school_params)
     redirect_to '/schools'
+  end
+
+  def index
+    @schools = School.order(created_at: :desc)
   end
 
   def show
@@ -55,7 +51,7 @@ class SchoolsController < ApplicationController
 
   def school_params
     if params[:school]
-      params.require(:school).permit(:school, :name, :school_code, :is_remote)
+      params.require(:school).permit(:name, :school_code, :is_remote)
     end
   end
 end
