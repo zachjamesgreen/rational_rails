@@ -54,7 +54,34 @@ RSpec.describe 'Author features' do
 
   it 'should have link on author show page to show all author stories' do
     visit("/author/#{@author1.id}")
-    expect(page).to have_link("See all #{@author1.stories.size} stories")
+    expect(page).to have_link("See all #{@author1.stories.size} stories", href: "/author/#{@author1.id}/stories")
+  end
+
+  it 'should have link to create author' do
+    visit("/authors")
+    expect(page).to have_link("Create an Author", href: "/author/new")
+  end
+
+  it 'should create a new author' do
+    visit("/author/new")
+    fill_in('Name', with: 'zach')
+    click_on('Submit')
+    expect(page).to have_current_path('/authors')
+    expect(page).to have_content('zach')
+  end
+
+  it 'should update an author' do
+    visit("/author/#{@author1.id}")
+    click_link('Update')
+    fill_in('Name', with: 'zach')
+    click_on('Submit')
+    expect(page).to have_current_path("/author/#{@author1.id}")
+    expect(page).to have_content('zach')
+  end
+
+  it 'should have link to create new story' do
+    visit("/author/#{@author2.id}/stories")
+    expect(page).to have_link('Create a Story for the Author')
   end
 
   it 'should show number of stories' do
@@ -63,5 +90,10 @@ RSpec.describe 'Author features' do
     expect(page).to have_current_path('/authors?sort_by_stories=true')
     expect(page).to have_content('Stories: 3')
     expect(@author2.name).to appear_before(@author1.name, only_text: true)
+  end
+
+  it 'should have link to edit from author index page' do
+    visit('/authors')
+    expect(page).to have_link('Update', href: "/author/#{@author1.id}/edit")
   end
 end
