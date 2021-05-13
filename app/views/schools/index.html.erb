@@ -1,13 +1,13 @@
-<h1>List of All Schools</h1>
-<ul>
+<h2>List of All Schools</h2>
+<ul class='model-list'>
     <a href='/schools/new'>Create new School</a>
     <%@schools.each do |school| %>
     <li>
-      <a href=<%="/schools/#{school.id}"%>><%="#{school.name}"%></a> <%="Created at: #{school.created_at}"%> <a class='custom-button' href='<%="/schools/#{school.id}/edit"%>'> Edit </a>
+      <a href=<%="/schools/#{school.id}"%>><%="#{school.name} Created at: #{school.created_at}"%></a> <a class='custom-button' href='<%="/schools/#{school.id}/edit"%>'> Edit </a>
       <form class='delete-form' action='<%="/schools/#{school.id}"%>' method='POST'>
         <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
         <input type='hidden' name='_method' value='DELETE' />
-        <input class='custom-button' type='submit' value='Delete' />
+        <input id='delete-button' class='custom-button' type='submit' value='Delete' />
       </form>
     </li>
     <%end%>
