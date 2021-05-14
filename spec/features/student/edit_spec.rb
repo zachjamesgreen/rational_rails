@@ -7,6 +7,10 @@ RSpec.describe 'the student edit' do
       @student = @turing_school.students.create!(name: 'Richard', is_alumni: false, age: 32, degree: 'Backend')
     end
 
+    after :all do
+      School.destroy_all
+    end
+
     it 'shows a title with the student name' do
       visit "/students/#{@student.id}/edit"
 
