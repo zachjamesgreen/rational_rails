@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/', to: 'welcome#index'
+
   get '/schools/new', to: 'schools#new'
   get '/schools/:id/students/new', to: 'students#new'
   get '/schools/:id/students', to: 'schools#students'
@@ -14,9 +16,14 @@ Rails.application.routes.draw do
 
   post '/schools/new', to: 'schools#create'
   post '/schools/:id/students/new', to: 'students#create'
+  post '/schools/:id/students', to: 'schools#students'
 
   patch '/schools/:id/edit', to: 'schools#update'
   patch '/students/:id/edit', to: 'students#update'
+
+  delete '/schools/:id/students', to: 'students#destroy'
+  delete '/schools/:id', to: 'schools#destroy'
+  delete '/students/:id', to: 'students#destroy'
 
   get '/story', to: 'story#index'
   get '/story/:id',to: 'story#show'

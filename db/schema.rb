@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_05_11_001234) do
     t.string "name"
     t.string "degree"
     t.boolean "is_alumni", default: false
-    t.integer "badge_code"
+    t.integer "age"
     t.bigint "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

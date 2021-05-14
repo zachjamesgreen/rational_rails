@@ -1,18 +1,14 @@
 class SchoolsController < ApplicationController
-  def index
-    @schools = School.order(created_at: :desc)
-  end
-
   def new
   end
 
   def create
-    attrs = params[:school]
-    School.create(name: attrs[:name],
-                  school_code: attrs[:school_code],
-                  is_remote: attrs[:is_remote])
-
+    School.create(school_params)
     redirect_to '/schools'
+  end
+
+  def index
+    @schools = School.order(created_at: :desc)
   end
 
   def show
@@ -22,7 +18,6 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     @school.update_attributes(school_params)
-    @school.save
     redirect_to "/schools/#{params[:id]}"
   end
 
@@ -30,22 +25,33 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
   end
 
+  def destroy
+    School.destroy(params[:id])
+    redirect_to '/schools'
+  end
+
   def students
-    @school = School.find(params[:id])
+    if params[:age]
+      @school = School.find(params[:id])
+      @students = @school.students.where("age > #{params[:age]}")
+    else
+      @school = School.find(params[:id])
+      @students = @school.students
+    end
   end
 
   def degrees
     @school = School.find(params[:id])
     @current_degrees = @school.students.each_with_object([]) do |student, degrees|
       degrees << student.degree
-    end.sort
+    end.sort.uniq
   end
 
   private
 
   def school_params
     if params[:school]
-      params.require(:school).permit(:school, :name, :school_code, :is_remote)
+      params.require(:school).permit(:name, :school_code, :is_remote)
     end
   end
 end

@@ -7,4 +7,9 @@
 <a href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br />
 <a href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br />
 <a href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br />
-<a href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a><br />
+<a href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a><br /><br />
+<form action='<%="/schools/#{@school.id}"%>' method='POST'>
+  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+  <input type='hidden' name='_method' value='DELETE' />
+  <input type='submit' value='Delete School' />
+</form>

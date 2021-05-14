@@ -9,8 +9,7 @@
   <input type='text' name='school[school_code]' value='<%=@school.school_code%>' /><br />
   <label for='school[is_remote]'>Is the School Remote?</label>
   <select name='school[is_remote]'>
-    <option value='true'>Yes</option>
-    <option value='false'>No</option>
+    <%=current_option(@school.is_remote)%>
   </select><br />
   <input type='submit' value='Update'/>
 </form>
