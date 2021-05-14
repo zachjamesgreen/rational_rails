@@ -7,19 +7,19 @@
         School Name
         </th>
       <th>
-        Creation Date / Date Added
+        Creation Date
         </th>
       </tr>
     <tr>
       <td>
-        <a class='td-select-area' href=<%="/schools/#{school.id}"%>><%="#{school.name}"%></a>
+        <a class='td-selection-area' href=<%="/schools/#{school.id}"%>><%="#{school.name}"%></a>
         </td>
       <td>
         <%=school.created_at%>
         </td>
     </tr>
-    <tr>
-      <td colspan='2' class='last-row'>
+    <tr class='last-row'>
+      <td colspan='2'>
         <a class='custom-button edit' href='<%="/schools/#{school.id}/edit"%>'> Edit </a>
         <form class='delete-form' action='<%="/schools/#{school.id}"%>' method='POST'>
           <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>

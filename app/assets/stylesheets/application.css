@@ -119,13 +119,19 @@
   border: 1px solid #ddd;
 }
 
-.model-list td.last-row {
-  border: none;
-  padding-bottom: 20px;
+.model-list tr:nth-child(even){
+  background-color: #dbdbdb;
 }
 
-.model-list tr:nth-child(even){
-  background-color: #f2f2f2;
+.last-row {
+  border: none;
+  background: white;
+}
+
+.last-row td {
+  border: none;
+  padding-bottom: 20px;
+  background: white;
 }
 
 .model-list th {
@@ -136,7 +142,7 @@
   color: white;
 }
 
-.model-list a.td-select-area {
+.model-list a.td-selection-area {
   text-decoration: none;
   color: black;
   display: inline-block;
@@ -145,7 +151,8 @@
   padding: 8px;
 }
 
-.model-list a.td-select-area:hover {
-  background-color: #ddd;
+.model-list a.td-selection-area:hover {
+  background-color: #8a8a8a;
+  color:white;
   cursor: pointer;
 }
