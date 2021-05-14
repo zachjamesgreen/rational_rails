@@ -1,14 +1,32 @@
 <h2>List of All Schools</h2>
-<ul class='model-list'>
-    <a href='/schools/new'>Create new School</a>
+<table class='model-list'>
+    <a class='custom-button new fs-4' href='/schools/new'>Add New School</a><br /><br />
     <%@schools.each do |school| %>
-    <li>
-      <a href=<%="/schools/#{school.id}"%>><%="#{school.name} Created at: #{school.created_at}"%></a> <a class='custom-button' href='<%="/schools/#{school.id}/edit"%>'> Edit </a>
-      <form class='delete-form' action='<%="/schools/#{school.id}"%>' method='POST'>
-        <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-        <input type='hidden' name='_method' value='DELETE' />
-        <input id='delete-button' class='custom-button' type='submit' value='Delete' />
-      </form>
-    </li>
+    <tr>
+      <th>
+        School Name
+        </th>
+      <th>
+        Creation Date / Date Added
+        </th>
+      </tr>
+    <tr>
+      <td>
+        <a class='td-select-area' href=<%="/schools/#{school.id}"%>><%="#{school.name}"%></a>
+        </td>
+      <td>
+        <%=school.created_at%>
+        </td>
+    </tr>
+    <tr>
+      <td colspan='2' class='last-row'>
+        <a class='custom-button edit' href='<%="/schools/#{school.id}/edit"%>'> Edit </a>
+        <form class='delete-form' action='<%="/schools/#{school.id}"%>' method='POST'>
+          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+          <input type='hidden' name='_method' value='DELETE' />
+          <input id='delete-button' class='custom-button danger' type='submit' value='Delete' />
+        </form>
+      </td>
+      </tr>
     <%end%>
-</ul>
+</table>
