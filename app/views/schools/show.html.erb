@@ -1,15 +1,47 @@
-<h2>School Record</h2>
-<h3>School ID: </h3><label><%=@school.id%></label>
-<h3>School Name: </h3><label><%=@school.name%></label>
-<h3>Number of Students: </h3><label><%=@school.students.length%></label>
-<h3>School Code: </h3><label><%=@school.school_code%></label>
-<h3>School is Remote? </h3><label><%=@school.remote?%></label><br /><br />
-<a href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br />
-<a href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br />
-<a href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br />
-<a href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a><br /><br />
+<br /><br /><br />
+<table class='model-list'>
+  <tr class='fs-3 pd-4 center-text'>
+    <th>
+      School ID
+      </th>
+    <th>
+      School Name
+      </th>
+    <th>
+      Number of Students
+      </th>
+    <th>
+      School Code
+      </th>
+    <th>
+      School Is Remote
+      </th>
+    </tr>
+    <tr class='fs-3 pd-4 center-text'>
+      <td>
+        <%=@school.id%>
+        </td>
+      <td>
+        <%=@school.name%>
+        </td>
+      <td>
+        <%=@school.students.count%>
+        </td>
+      <td>
+        <%=@school.school_code%>
+        </td>
+      <td>
+        <%=@school.remote?%>
+        </td>
+      </tr>
+  </table><br />
+
+<a class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
+<a class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
+<a class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
+<a class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a><br /><br />
 <form action='<%="/schools/#{@school.id}"%>' method='POST'>
   <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
   <input type='hidden' name='_method' value='DELETE' />
-  <input type='submit' value='Delete School' />
+  <input class='custom-button danger' type='submit' value='Delete School' />
 </form>

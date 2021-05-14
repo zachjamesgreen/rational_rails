@@ -92,20 +92,15 @@
   cursor: pointer;
 }
 
-.fs-1 {
-  font-size: 10px;
+.normal {
+  background-color: #35c0db;
+  color: white;
 }
 
-.fs-2 {
-  font-size: 14px;
-}
-
-.fs-3 {
-  font-size: 16px;
-}
-
-.fs-4 {
-  font-size: 20px;
+.normal:hover {
+  background-color: #096c80;
+  color: white;
+  cursor: pointer;
 }
 
 .model-list {
@@ -155,4 +150,37 @@
   background-color: #8a8a8a;
   color:white;
   cursor: pointer;
+}
+
+.center-text td {
+  text-align: center;
+}
+
+.pd-1 td, th {
+  padding: 2px;
+}
+.pd-2 td, th {
+  padding: 4px;
+}
+.pd-3 td, th {
+  padding: 6px;
+}
+.pd-4 td, th {
+  padding: 8px;
+}
+
+.fs-1 {
+  font-size: 10px;
+}
+
+.fs-2 {
+  font-size: 14px;
+}
+
+.fs-3 {
+  font-size: 16px;
+}
+
+.fs-4 {
+  font-size: 20px;
 }
