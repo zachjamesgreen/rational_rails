@@ -16,7 +16,7 @@ class AuthorController < ApplicationController
     @author = Author.find(params[:id])
     likes = params[:greater_than].to_i
     @stories = @author.stories
-    @stories = @stories.where(likes: likes..Float::INFINITY) if params[:greater_than]
+    @stories = @stories.where(likes: likes + 1..Float::INFINITY) if params[:greater_than]
     @stories = @stories.order(:name) if params[:sort_by_name]
   end
 
