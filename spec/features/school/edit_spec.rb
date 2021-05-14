@@ -20,8 +20,11 @@ RSpec.describe 'The school edit page' do
   end
 
   describe 'edit form,' do
-    it 'is present' do
+    before :each do
       visit "/schools/#{@turing_school.id}/edit"
+    end
+
+    it 'is present' do
       expect(page.find('form')).to be_present
     end
 
@@ -36,8 +39,6 @@ RSpec.describe 'The school edit page' do
     end
 
     it 'navigates back to the edited school when form is submitted with new data visible' do
-      visit "/schools/#{@turing_school.id}/edit"
-
       within 'form' do
         fill_in 'school[name]', with: Faker::Educator.university
         find(:id, 'submit_button').click
