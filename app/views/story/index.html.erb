@@ -15,7 +15,7 @@
     <li>Likes: <%= story.likes %></li>
     <li>Published: <%= story.published %></li>
     <li>Author: <%= story.author.name %></li>
-    <li><a href="/story/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/story/#{story.id}", method: :delete, data: {confirm: 'Are your sure?'} %></li>
+    <li><a href="/story/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/story/#{story.id}", method: :delete, id: "delete_story_#{story.id}" %></li>
   </ul>
 
 <% end %>

@@ -6,10 +6,13 @@ RSpec.describe 'Story features' do
     @author2 = create(:author)
     s1 = attributes_for(:story)
     s2 = attributes_for(:story)
+    s4 = attributes_for(:story)
     s1[:published] = true
     s2[:published] = false
+    s4[:published] = true
     @story1 = @author1.stories.create!(s1)
     @story2 = @author1.stories.create!(s2)
+    @story4 = @author1.stories.create!(s4)
     @story3 = @author1.stories.create!(attributes_for(:story))
   end
 
@@ -75,5 +78,33 @@ RSpec.describe 'Story features' do
     expect(page).to have_link('Update', href: "/story/#{@story1.id}/edit")
     visit("/author/#{@author1.id}/stories")
     expect(page).to have_link('Update', href: "/story/#{@story1.id}/edit")
+  end
+
+  it 'should delete story' do
+    visit("/story/#{@story3.id}")
+    expect(page).to have_link('Delete', href: "/story/#{@story3.id}")
+    click_on('Delete')
+    expect(page).to have_current_path('/story')
+    expect(page).to have_no_content(@story3.name)
+  end
+
+  it 'should delete story from index page' do
+    visit('/story')
+    expect(page).to have_content(@story1.name)
+    expect(page).to have_link('Delete', href: "/story/#{@story1.id}")
+    expect(page).to have_content(@story4.name)
+    expect(page).to have_link('Delete', href: "/story/#{@story4.id}")
+    click_on("delete_story_#{@story1.id}")
+    expect(page).to have_current_path('/story')
+    expect(page).to have_content(@story4.name)
+    expect(page).to have_no_content(@story1.name)
+  end
+
+  it 'should give all authors by exact match' do
+
+  end
+
+  it 'should give all authors by partial match' do
+
   end
 end
