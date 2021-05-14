@@ -34,14 +34,21 @@
         <%=@school.remote?%>
         </td>
       </tr>
+    <tr class='last-row'>
+      <td colspan='2'>
+        <a class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
+        <a class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
+        <form action='<%="/schools/#{@school.id}"%>' method='POST'>
+          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+          <input type='hidden' name='_method' value='DELETE' />
+          <input class='custom-button danger' type='submit' value='Delete School' />
+        </form>
+        </td>
+      <td>
+        <a class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
+        <a class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a>
+        </td>
+      <td colspan='2'>
+        </td>
+      </tr>
   </table><br />
-
-<a class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
-<a class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
-<a class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
-<a class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a><br /><br />
-<form action='<%="/schools/#{@school.id}"%>' method='POST'>
-  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <input type='hidden' name='_method' value='DELETE' />
-  <input class='custom-button danger' type='submit' value='Delete School' />
-</form>

@@ -4,17 +4,35 @@
   <label for='count'>Get students older than </label>
   <input type='number' name='age' />
   <input type='submit' value='Submit' />
-</form>
-<ul>
+</form><br />
+<table class='model-list'>
+  <tr>
+    <th>
+      Student Name
+    </th>
+    <th>
+      Creation Date
+    </th>
+  </tr>
   <%@students.each do |student| %>
-  <li>
-    <a href=<%="/students/#{student.id}"%>><%=student.name%></a> <a class='custom-button' href='<%="/students/#{student.id}/edit"%>'>Edit</a>
-    <form class='delete-form' action='<%="/schools/#{@school.id}/students"%>' method='POST'>
-      <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-      <input type='hidden' name='_method' value='DELETE' />
-      <input type='hidden' name='student[id]' value='<%=student.id%>' />
-      <input class='custom-button' type='submit' value='Delete' />
-    </form>
-  </li>
-  <%end%>
-</ul>
+    <tr>
+      <td>
+        <a class='td-selection-area' href=<%="/students/#{student.id}"%>><%=student.name%></a>
+        </td>
+      <td>
+        <%=student.created_at%>
+        </td>
+      </tr>
+    <tr class='last-row'>
+      <td colspan='2'>
+        <a class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'> Edit </a>
+        <form class='delete-form' action='<%="/schools/#{@school.id}/students"%>' method='POST'>
+          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+          <input type='hidden' name='_method' value='DELETE' />
+          <input type='hidden' name='student[id]' value='<%=student.id%>' />
+          <input class='custom-button danger' type='submit' value='Delete' />
+        </form>
+        </td>
+      </tr>
+    <%end%>
+  </table>
