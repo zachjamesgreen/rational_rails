@@ -5,5 +5,5 @@
   <input type='text' id="name" name='author[name]' value='<%= @author.name %>'/><br/>
   <label for="admin">Admin?</label>
   <input type="checkbox" id="admin" name="author[admin]" <%= @author.admin? ? 'checked' : '' %>/><br/>
-  <input type='submit'/>
+  <input type='submit' name="Submit"/>
 </form>

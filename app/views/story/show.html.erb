@@ -1,6 +1,6 @@
 <h1><%= @story.name %></h1>
 <a href="/story/<%= @story.id %>/edit">Update</a>
-<%= link_to 'Delete', "/story/#{@story.id}", method: :delete, data: {confirm: 'Are your sure?'} %>
+<%= link_to 'Delete', "/story/#{@story.id}", method: :delete, id: "delete_story_#{@story.id}" %>
 <ul>
   <li>Likes: <%= @story.likes %></li>
   <li>Published: <%= @story.published %></li>

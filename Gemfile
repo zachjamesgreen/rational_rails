@@ -45,6 +45,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'orderly'
+  gem 'database_cleaner-active_record'
+  # gem 'selenium-webdriver'
 end
 
 group :development do

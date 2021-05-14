@@ -1,4 +1,4 @@
-<a href="/story/new">Create a Story</a>
+<h1>Stories</h1>
 <form action="/story" method="get">
   <label for="exact_match"></label>
   <input type="text" id="exact_match" name="exact_match" placeholder="Exact Match for Name">
@@ -15,7 +15,7 @@
     <li>Likes: <%= story.likes %></li>
     <li>Published: <%= story.published %></li>
     <li>Author: <%= story.author.name %></li>
-    <li><a href="/story/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/story/#{story.id}", method: :delete, data: {confirm: 'Are your sure?'} %></li>
+    <li><a href="/story/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/story/#{story.id}", method: :delete, id: "delete_story_#{story.id}" %></li>
   </ul>
 
 <% end %>
