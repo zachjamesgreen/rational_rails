@@ -1,11 +1,17 @@
-<h2>List of Students for <a href=<%="/schools/#{@school.id}"%>><%=@school.name%></a></h2>
-<form action='<%="/schools/#{@school.id}/students"%>' method='POST'>
-  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <label for='count'>Get students older than </label>
-  <input type='number' name='age' />
-  <input type='submit' value='Submit' />
-</form><br />
-<table class='model-list'>
+<h2 class='center-heading'>List of Students for <a href=<%="/schools/#{@school.id}"%>><%=@school.name%></a></h2>
+<table id='header_table' class='model-list'>
+  <tr class='last-row'>
+    <td>
+      <form id='greater_than_age_form' action='<%="/schools/#{@school.id}/students"%>' method='POST'>
+        <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+        <label for='count'>Get students older than</label>
+        <input type='number' name='age' />
+        <input id='submit_age_sort_btn' type='submit' value='Submit' />
+      </form>
+      </td>
+    </tr>
+  </table>
+<table id='student-table' class='model-list'>
   <tr>
     <th>
       Student Name
@@ -15,9 +21,9 @@
     </th>
   </tr>
   <%@students.each do |student| %>
-    <tr>
+    <tr id='<%="student_data_row_#{student.id}"%>'>
       <td>
-        <a class='td-selection-area' href=<%="/students/#{student.id}"%>><%=student.name%></a>
+        <a id='<%="view_student_#{student.id}"%>' class='td-selection-area' href=<%="/students/#{student.id}"%>><%=student.name%></a>
         </td>
       <td>
         <%=student.created_at%>
@@ -25,12 +31,12 @@
       </tr>
     <tr class='last-row'>
       <td colspan='2'>
-        <a class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'> Edit </a>
+        <a id='<%="edit_student_#{student.id}"%>' class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'>Edit</a>
         <form class='delete-form' action='<%="/schools/#{@school.id}/students"%>' method='POST'>
           <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
           <input type='hidden' name='_method' value='DELETE' />
           <input type='hidden' name='student[id]' value='<%=student.id%>' />
-          <input class='custom-button danger' type='submit' value='Delete' />
+          <input id='<%="delete_student_#{student.id}"%>' class='custom-button danger' type='submit' value='Delete' />
         </form>
         </td>
       </tr>
