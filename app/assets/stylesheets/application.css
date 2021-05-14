@@ -41,28 +41,111 @@
   display: inline-block;
 }
 
-a.custom-button {
-  text-decoration: none;
-  text-align: center;
-  color: blue;
-  display: inline-block;
-  font-size: 16px;
-}
-
-a.custom-button:hover {
-  background-color: grey;
-  color: white;
-}
-
 .custom-button {
   border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .custom-button:hover {
   background-color: grey;
   color: white;
+  cursor: pointer;
+}
+
+.danger {
+  background-color: #e61300;
+  color: white;
+}
+
+.danger:hover {
+  background-color: #8f0c00;
+  color: white;
+  cursor: pointer;
+}
+
+.new {
+  background-color: #54cc60;
+  color: white;
+}
+
+.new:hover {
+  background-color: #02780e;
+  color: white;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: #4a8fff;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #104fb5;
+  color: white;
+  cursor: pointer;
+}
+
+.fs-1 {
+  font-size: 10px;
+}
+
+.fs-2 {
+  font-size: 14px;
+}
+
+.fs-3 {
+  font-size: 16px;
+}
+
+.fs-4 {
+  font-size: 20px;
+}
+
+.model-list {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+.model-list td, .model-list th {
+  border: 1px solid #ddd;
+}
+
+.model-list td.last-row {
+  border: none;
+  padding-bottom: 20px;
+}
+
+.model-list tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.model-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #333;
+  color: white;
+}
+
+.model-list a.td-select-area {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  width: 95%;
+  height: 100%;
+  padding: 8px;
+}
+
+.model-list a.td-select-area:hover {
+  background-color: #ddd;
+  cursor: pointer;
 }
