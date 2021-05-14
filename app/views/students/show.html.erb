@@ -1,12 +1,43 @@
-<h2>Student Record</h2>
-<h3>Student ID: <%=@student.id%></h3>
-<h3>Student Name: <%=@student.name%></h3>
-<h3>Student Age: <%=@student.age%></h3>
-<h3>Degree: <%=@student.degree%></h3>
-<h3>Graduated: <%=@student.has_graduated?%></h3>
-<a href='<%="/students/#{@student.id}/edit"%>'>Update Student</a><br /><br />
-<form action='<%="/students/#{@student.id}"%>' method='POST'>
-  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <input type='hidden' name='_method' value='DELETE' />
-  <input type='submit' value='Delete Student' />
-</form>
+<br /><br /><br />
+<table class='model-list'>
+  <tr class='fs-3 pd-4 center-text'>
+    <th>
+      School ID
+      </th>
+    <th>
+      School Name
+      </th>
+    <th>
+      Student's Age
+      </th>
+    <th>
+      Pursued Degree
+      </th>
+    <th>
+      Graduate
+      </th>
+    </tr>
+    <tr class='fs-3 pd-4 center-text'>
+      <td>
+        <%=@student.id%>
+        </td>
+      <td>
+        <%=@student.name%>
+        </td>
+      <td>
+        <%=@student.age%>
+        </td>
+      <td>
+        <%=@student.degree%>
+        </td>
+      <td>
+        <%=@student.has_graduated?%>
+        </td>
+      </tr>
+  </table><br /><br />
+  <a class='custom-button edit' href='<%="/students/#{@student.id}/edit"%>'>Update Student</a><br /><br />
+  <form action='<%="/students/#{@student.id}"%>' method='POST'>
+    <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+    <input type='hidden' name='_method' value='DELETE' />
+    <input class='custom-button danger' type='submit' value='Delete Student' />
+  </form>
