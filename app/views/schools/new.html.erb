@@ -1,15 +1,17 @@
-<h2>Create a new School</h2>
+<h2 class='center-header'>Create a new School</h2>
 
-<form action='/schools/new' method='POST'>
-  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <label for='school[name]'>Name of School</label>
-  <input type='text' name='school[name]' /><br />
-  <label for='school[school_code]'>School Code</label>
-  <input type='text' name='school[school_code]' /><br />
-  <label for='school[is_remote]'>Is the School Remote?</label>
-  <select name='school[is_remote]'>
-    <option value='true'>Yes</option>
-    <option value='false'>No</option>
-  </select><br />
-  <input type='submit' value='Create'/>
-</form>
+<div class='new-form-area'>
+  <form class='new-form' action='/schools/new' method='POST'>
+    <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+    <label for='school[name]'>Name of School</label>
+    <input type='text' name='school[name]' /><br />
+    <label for='school[school_code]'>School Code</label>
+    <input type='text' name='school[school_code]' /><br />
+    <label for='school[is_remote]'>Is the School Remote?</label>
+    <select name='school[is_remote]'>
+      <option value='true'>Yes</option>
+      <option value='false'>No</option>
+    </select><br />
+    <input type='submit' value='Create'/>
+  </form>
+  </div>

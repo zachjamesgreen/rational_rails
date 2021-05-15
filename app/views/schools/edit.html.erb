@@ -1,15 +1,17 @@
 <h2>Edit School <%=@school.name%></h2>
 
-<form action='<%="/schools/#{@school.id}/edit"%>' method='POST'>
-  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <input type='hidden' name='_method' value='PATCH' />
-  <label for='school[name]'>Name of School</label>
-  <input id='school_name' type='text' name='school[name]' value='<%=@school.name%>' /><br />
-  <label for='school[school_code]'>School Code</label>
-  <input id='school_code' type='text' name='school[school_code]' value='<%=@school.school_code%>' /><br />
-  <label for='school[is_remote]'>Is the School Remote?</label>
-  <select id='school_is_remote' name='school[is_remote]'>
-    <%=current_option(@school.is_remote)%>
-  </select><br />
-  <input id='submit_button' type='submit' value='Update'/>
-</form>
+<div class='new-form-area'>
+  <form class='new-form' action='<%="/schools/#{@school.id}/edit"%>' method='POST'>
+    <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+    <input type='hidden' name='_method' value='PATCH' />
+    <label for='school[name]'>Name of School</label>
+    <input id='school_name' type='text' name='school[name]' value='<%=@school.name%>' /><br />
+    <label for='school[school_code]'>School Code</label>
+    <input id='school_code' type='text' name='school[school_code]' value='<%=@school.school_code%>' /><br />
+    <label for='school[is_remote]'>Is the School Remote?</label>
+    <select id='school_is_remote' name='school[is_remote]'>
+      <%=current_option(@school.is_remote)%>
+    </select><br />
+    <input id='submit_button' type='submit' value='Update'/>
+  </form>
+  </div>
