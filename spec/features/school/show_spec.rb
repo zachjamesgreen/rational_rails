@@ -7,8 +7,20 @@ RSpec.describe 'The show school page,' do
     it 'shows the attributes'
   end
   describe 'clickable buttons,' do
-    describe 'Edit,' do
+    describe 'Add Student,' do
+      it 'navigates to /schools/:id/students/new'
+    end
+
+    describe 'View Students,' do
+      it 'navigates to /schools/:id/students'
+    end
+
+    describe 'Update,' do
       it 'navigates to /schools/:id/edit'
+    end
+
+    describe 'Delete,' do
+      it 'deletes school and will not be visible anymore at /schools'
     end
   end
 end
