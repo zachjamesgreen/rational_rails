@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe School, type: :model do
+
+  describe 'relationships' do
+    it { should have_many :students }
+  end
+
   describe 'instance methods' do
     describe '#remote?' do
       it 'returns Yes if the school is remote' do

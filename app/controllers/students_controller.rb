@@ -1,10 +1,13 @@
+require './app/models/school'
+
 class StudentsController < ApplicationController
   def new
     @school_id = params[:id]
   end
 
   def create
-    Student.create(student_params)
+    school = School.find(params[:id])
+    school.students.create(student_params)
     redirect_to "/schools/#{params[:id]}/students"
   end
 
