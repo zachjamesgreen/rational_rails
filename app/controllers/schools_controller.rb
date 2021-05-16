@@ -31,13 +31,11 @@ class SchoolsController < ApplicationController
   end
 
   def students
-    if params[:age]
-      @school = School.find(params[:id])
-      @students = @school.students.where("age > #{params[:age]}")
-    else
-      @school = School.find(params[:id])
-      @students = @school.students
-    end
+    @school = School.find(params[:id])
+
+    @students = @school.students
+    @students = @students.order(:name) if params[:sort_by_name]
+    @students = @students.where("age > #{params[:age]}") if params[:age]
   end
 
   def degrees
