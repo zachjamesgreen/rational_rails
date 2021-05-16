@@ -39,12 +39,16 @@ RSpec.describe 'The school edit page' do
     end
 
     it 'navigates back to the edited school when form is submitted with new data visible' do
+      new_name = Faker::Educator.university
+
       within 'form' do
-        fill_in 'school[name]', with: Faker::Educator.university
+        fill_in 'school[name]', with: new_name
         find(:id, 'submit_button').click
       end
 
       current_path.should eq "/schools/#{@turing_school.id}"
+
+      expect(page.find(:id, 'school_name')).to have_content(new_name)
     end
   end
 end
