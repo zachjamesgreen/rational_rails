@@ -1,7 +1,7 @@
 <h2 class='center-heading'>List of All Graduated Students</h2>
 
-<table class='model-list'>
-  <tr>
+<table id='students_table' class='model-list'>
+  <tr id='header_row'>
     <th>
       Student Name
     </th>
@@ -10,7 +10,7 @@
     </th>
   </tr>
   <%@students.each do |student| %>
-    <tr>
+    <tr id='<%="student_data_row_#{student.id}"%>'>
       <td>
         <a class='td-selection-area' href=<%="/students/#{student.id}"%>><%=student.name%></a>
         </td>
@@ -20,7 +20,7 @@
       </tr>
     <tr class='last-row'>
       <td colspan='2'>
-        <a class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'> Edit </a>
+        <a id='<%="edit_student_#{student.id}_btn"%>' class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'>Edit</a>
         </td>
       </tr>
     <%end%>

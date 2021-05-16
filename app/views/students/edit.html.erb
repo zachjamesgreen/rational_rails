@@ -10,7 +10,7 @@
     <input id='student_age' type='text' name='student[age]' value='<%=@student.age%>'/><br />
     <label for='student[degree]' name='student[degree]'>Student's Degree</label>
     <input id='student_degree' type='text' name='student[degree]' value='<%=@student.degree%>'/><br />
-    <label for='student[is_alumni]'>Has Student Graduate?</label>
+    <label for='student[is_alumni]'>Student is Alumni</label>
     <select id='student_is_alumni' name='student[is_alumni]'>
       <%=current_option(@student.is_alumni)%>
     </select><br />
