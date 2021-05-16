@@ -58,7 +58,7 @@ RSpec.describe 'The new student page,' do
 
       current_path.should eq "/schools/#{@test_school.id}/students"
       expect(page.find(:id, "student_data_row_#{new_student.id}")).to have_content(student_name)
-      expect(page.find(:id, "student_data_row_#{new_student.id}")).to have_content(new_student.created_at)
+      expect(page.find(:id, "student_data_row_#{new_student.id}")).to have_content(new_student.created_at.to_s)
     end
   end
 end

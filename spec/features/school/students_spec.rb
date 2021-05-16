@@ -136,7 +136,7 @@ RSpec.describe 'The list of students for school,' do
 
   describe 'student list,' do
     it 'shows all students for the school' do
-      expected_data_seen = Student.order(:name).map do |student|
+      expected_data_seen = Student.all.map do |student|
         [student.name, student.created_at.to_s]
       end
 
