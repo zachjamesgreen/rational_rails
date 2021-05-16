@@ -34,10 +34,14 @@
         <%=@student.has_graduated?%>
         </td>
       </tr>
-  </table><br /><br />
-  <a class='custom-button edit' href='<%="/students/#{@student.id}/edit"%>'>Update Student</a><br /><br />
-  <form action='<%="/students/#{@student.id}"%>' method='POST'>
-    <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-    <input type='hidden' name='_method' value='DELETE' />
-    <input class='custom-button danger' type='submit' value='Delete Student' />
-  </form>
+    <tr class='last-row'>
+      <td colspan='5'>
+        <a class='custom-button edit' href='<%="/students/#{@student.id}/edit"%>'>Update Student</a><br /><br />
+        <form action='<%="/students/#{@student.id}"%>' method='POST'>
+          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+          <input type='hidden' name='_method' value='DELETE' />
+          <input class='custom-button danger' type='submit' value='Delete Student' />
+        </form>
+        </td>
+      </tr>
+  </table>

@@ -1,6 +1,6 @@
 <br /><br /><br />
-<table class='model-list'>
-  <tr class='fs-3 pd-4 center-text'>
+<table id='school_table' class='model-list'>
+  <tr id='header_row' class='fs-3 pd-4 center-text'>
     <th>
       School ID
       </th>
@@ -17,36 +17,36 @@
       School Is Remote
       </th>
     </tr>
-    <tr class='fs-3 pd-4 center-text'>
-      <td>
+    <tr id='school_attrs' class='fs-3 pd-4 center-text'>
+      <td id='school_id'>
         <%=@school.id%>
         </td>
-      <td>
+      <td id='school_name'>
         <%=@school.name%>
         </td>
-      <td>
+      <td id='student_count'>
         <%=@school.students.count%>
         </td>
-      <td>
+      <td id='school_code'>
         <%=@school.school_code%>
         </td>
-      <td>
+      <td id='school_is_remote'>
         <%=@school.remote?%>
         </td>
       </tr>
     <tr class='last-row'>
       <td colspan='2'>
-        <a class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
-        <a class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
+        <a id='add_student_btn' class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
+        <a id='edit_school_btn' class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
         <form action='<%="/schools/#{@school.id}"%>' method='POST'>
           <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
           <input type='hidden' name='_method' value='DELETE' />
-          <input class='custom-button danger' type='submit' value='Delete School' />
+          <input id='delete_school_btn' class='custom-button danger' type='submit' value='Delete School' />
         </form>
         </td>
       <td>
-        <a class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
-        <a class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a>
+        <a id='view_students_btn' class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
+        <a id='show_degrees_btn' class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a>
         </td>
       <td colspan='2'>
         </td>
