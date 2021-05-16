@@ -66,8 +66,7 @@ RSpec.describe 'The show school page,' do
         find(:id, 'delete_school_btn').click
 
         begin
-          page.find(:id, "school_data_row_#{@test_school.id}")
-          fail
+          fail if page.find(:id, "school_data_row_#{@test_school.id}")
         rescue
           current_path.should eq '/schools'
         end
