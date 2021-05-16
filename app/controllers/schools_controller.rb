@@ -32,17 +32,12 @@ class SchoolsController < ApplicationController
 
   def students
     @school = School.find(params[:id])
-
-    @students = @school.students
-    @students = @students.order(:name) if params[:sort_by_name]
-    @students = @students.where("age > #{params[:age]}") if params[:age]
+    @students = @school.students_by(params)
   end
 
   def degrees
     @school = School.find(params[:id])
-    @current_degrees = @school.students.each_with_object([]) do |student, degrees|
-      degrees << student.degree
-    end.sort.uniq
+    @current_degrees = @school.pursued_degrees
   end
 
   private
