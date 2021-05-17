@@ -38,13 +38,6 @@ RSpec.describe 'The list of students for school,' do
     end
 
     describe 'submission button,' do
-      it 'has a label' do
-        form = page.find(:id, 'greater_than_age_form')
-
-        expect(form.find('label')).to be_present
-        expect(form.find('label')).to have_content('Get students older than')
-      end
-
       it 'submits request and shows new list of students based on given query value' do
         submit_button = page.find(:id, 'submit_age_sort_btn')
         form = page.find(:id, 'greater_than_age_form')
