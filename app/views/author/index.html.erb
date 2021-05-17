@@ -1,5 +1,5 @@
 <h1>Authors</h1>
-<a href="/author/new">Create an Author</a>
+<a href="/authors/new">Create an Author</a>
 <a href="/authors?sort_by_stories=true">Sort by Stories</a>
 <form action="/authors" method="get">
   <label for="exact_match"></label>
@@ -13,10 +13,10 @@
 </form>
 <% @authors.each do |author| %>
   <p>
-    <a href="/author/<%= author.id %>"><%= author.name %></a>
+    <a href="/authors/<%= author.id %>"><%= author.name %></a>
     Created At: <%= author.created_at %>
-    <a href="/author/<%= author.id %>/edit">Update</a>
-    <%= link_to 'Delete', "/author/#{author.id}", method: :delete, id: "delete_author_#{author.id}" %>
+    <a href="/authors/<%= author.id %>/edit">Update</a>
+    <%= link_to 'Delete', "/authors/#{author.id}", method: :delete, id: "delete_author_#{author.id}" %>
     <% if params[:sort_by_stories] %>
       Stories: <%= author.stories.size %>
     <% end %>

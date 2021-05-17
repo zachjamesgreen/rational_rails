@@ -1,10 +1,10 @@
 <h1><%= @author.name %></h1>
-<a href="/author/<%= @author.id %>/edit">Update</a>
-<%= link_to 'Delete', "/author/#{@author.id}", method: :delete, data: {confirm: 'Are your sure?'} %>
+<a href="/authors/<%= @author.id %>/edit">Update</a>
+<%= link_to 'Delete', "/authors/#{@author.id}", method: :delete, data: {confirm: 'Are your sure?'} %>
 
 <p>Admin: <%= @author.admin? %></p>
 <p>Rating: <%= @author.rating %></p>
 <p>Created At: <%= @author.created_at %></p>
 <p>Updated At: <%= @author.updated_at %></p>
 
-<a href="/author/<%= @author.id %>/stories">See all <%= @author.stories.size %> stories</a>
+<a href="/authors/<%= @author.id %>/stories">See all <%= @author.stories.size %> stories</a>
