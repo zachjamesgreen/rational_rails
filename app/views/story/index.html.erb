@@ -1,21 +1,21 @@
 <h1>Stories</h1>
-<form action="/story" method="get">
+<form action="/stories" method="get">
   <label for="exact_match"></label>
   <input type="text" id="exact_match" name="exact_match" placeholder="Exact Match for Name">
   <input type="submit">
 </form>
-<form action="/story" method="get">
+<form action="/stories" method="get">
   <label for="partial_match"></label>
   <input type="text" id="partial_match" name="partial_match" placeholder="Partial Match for Name">
   <input type="submit">
 </form>
 <% @stories.each do |story| %>
-  <h3><a href="/story/<%= story.id %>"><%= story.name %></a></h3>
+  <h3><a href="/stories/<%= story.id %>"><%= story.name %></a></h3>
   <ul>
     <li>Likes: <%= story.likes %></li>
     <li>Published: <%= story.published %></li>
     <li>Author: <%= story.author.name %></li>
-    <li><a href="/story/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/story/#{story.id}", method: :delete, id: "delete_story_#{story.id}" %></li>
+    <li><a href="/stories/<%= story.id %>/edit">Update</a> <%= link_to 'Delete', "/stories/#{story.id}", method: :delete, id: "delete_story_#{story.id}" %></li>
   </ul>
 
 <% end %>

@@ -17,7 +17,7 @@ RSpec.describe 'Author features' do
   end
 
   it 'should show single author' do
-    visit("/author/#{@author1.id}")
+    visit("/authors/#{@author1.id}")
     expect(page).to have_content(@author1.name)
     expect(page).to have_content("Admin: #{@author1.admin}")
     expect(page).to have_content("Rating: #{@author1.rating}")
@@ -26,7 +26,7 @@ RSpec.describe 'Author features' do
   end
 
   it 'should show all stories for author' do
-    visit("/author/#{@author1.id}/stories")
+    visit("/authors/#{@author1.id}/stories")
     expect(page).to have_content(@author1.name)
     expect(page).to have_content(@story1.name)
     expect(page).to have_content(@story2.name)
@@ -41,9 +41,9 @@ RSpec.describe 'Author features' do
   end
 
   it 'should show count of stories for authors' do
-    visit("/author/#{@author1.id}")
+    visit("/authors/#{@author1.id}")
     expect(page).to have_content("See all #{@author1.stories.size} stories")
-    visit("/author/#{@author2.id}")
+    visit("/authors/#{@author2.id}")
     expect(page).to have_content("See all #{@author2.stories.size} stories")
   end
 
@@ -54,17 +54,17 @@ RSpec.describe 'Author features' do
   end
 
   it 'should have link on author show page to show all author stories' do
-    visit("/author/#{@author1.id}")
-    expect(page).to have_link("See all #{@author1.stories.size} stories", href: "/author/#{@author1.id}/stories")
+    visit("/authors/#{@author1.id}")
+    expect(page).to have_link("See all #{@author1.stories.size} stories", href: "/authors/#{@author1.id}/stories")
   end
 
   it 'should have link to create author' do
     visit("/authors")
-    expect(page).to have_link("Create an Author", href: "/author/new")
+    expect(page).to have_link("Create an Author", href: "/authors/new")
   end
 
   it 'should create a new author' do
-    visit("/author/new")
+    visit("/authors/new")
     fill_in('Name', with: 'zach')
     click_on('Submit')
     expect(page).to have_current_path('/authors')
@@ -72,16 +72,16 @@ RSpec.describe 'Author features' do
   end
 
   it 'should update an author' do
-    visit("/author/#{@author1.id}")
+    visit("/authors/#{@author1.id}")
     click_link('Update')
     fill_in('Name', with: 'zach')
     click_on('Submit')
-    expect(page).to have_current_path("/author/#{@author1.id}")
+    expect(page).to have_current_path("/authors/#{@author1.id}")
     expect(page).to have_content('zach')
   end
 
   it 'should have link to create new story' do
-    visit("/author/#{@author2.id}/stories")
+    visit("/authors/#{@author2.id}/stories")
     expect(page).to have_link('Create a Story for the Author')
   end
 
@@ -95,18 +95,18 @@ RSpec.describe 'Author features' do
 
   it 'should have link to edit from author index page' do
     visit('/authors')
-    expect(page).to have_link('Update', href: "/author/#{@author1.id}/edit")
+    expect(page).to have_link('Update', href: "/authors/#{@author1.id}/edit")
   end
 
   it 'should delete author and all stories from show page' do
     story = @author2.stories.create(name: 'Delete Me')
-    visit("/author/#{@author2.id}")
+    visit("/authors/#{@author2.id}")
     expect(page).to have_content(@author2.name)
-    expect(page).to have_link('Delete', href: "/author/#{@author2.id}")
+    expect(page).to have_link('Delete', href: "/authors/#{@author2.id}")
     click_on('Delete')
     expect(page).to have_current_path('/authors')
     expect(page).to have_no_content(@author2.name)
-    visit('/story')
+    visit('/stories')
     expect(page).to have_no_content(story.name)
   end
 
@@ -114,13 +114,13 @@ RSpec.describe 'Author features' do
     s1 = @author2.stories.create(name: 'High Likes', likes: 100)
     s2 = @author2.stories.create(name: 'Med Likes', likes: 50)
     s3 = @author2.stories.create(name: 'Low Likes', likes: 20)
-    visit("/author/#{@author2.id}/stories")
+    visit("/authors/#{@author2.id}/stories")
     expect(page).to have_content(s1.name)
     expect(page).to have_content(s2.name)
     expect(page).to have_content(s3.name)
     fill_in('Filter by likes greater than', with: 50)
     click_on('Submit')
-    expect(page).to have_current_path("/author/#{@author2.id}/stories?greater_than=50&Submit=")
+    expect(page).to have_current_path("/authors/#{@author2.id}/stories?greater_than=50&Submit=")
     expect(page).to have_content(s1.name)
     expect(page).to have_no_content(s2.name)
     fill_in('Filter by likes greater than', with: 20)
@@ -132,9 +132,9 @@ RSpec.describe 'Author features' do
   it 'should delete author from index page' do
     visit('/authors')
     expect(page).to have_content(@author1.name)
-    expect(page).to have_link('Delete', href: "/author/#{@author1.id}")
+    expect(page).to have_link('Delete', href: "/authors/#{@author1.id}")
     expect(page).to have_content(@author2.name)
-    expect(page).to have_link('Delete', href: "/author/#{@author2.id}")
+    expect(page).to have_link('Delete', href: "/authors/#{@author2.id}")
     click_on("delete_author_#{@author2.id}")
     expect(page).to have_current_path('/authors')
     expect(page).to have_content(@author1.name)

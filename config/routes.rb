@@ -25,22 +25,22 @@ Rails.application.routes.draw do
   delete '/schools/:id', to: 'schools#destroy'
   delete '/students/:id', to: 'students#destroy'
 
-  get '/story', to: 'story#index'
-  get '/story/:id',to: 'story#show'
-  get '/story/:id/edit', to: 'story#edit'
-  post '/story/:id', to: 'story#update'
-  delete '/story/:id', to: 'story#delete', as: :story_delete
+  get '/stories', to: 'story#index'
+  get '/stories/:id',to: 'story#show'
+  get '/stories/:id/edit', to: 'story#edit'
+  post '/stories/:id', to: 'story#update'
+  delete '/stories/:id', to: 'story#delete', as: :story_delete
 
-  get '/author/:id/story/new', to: 'story#new'
-  post '/author/:id/story', to: 'story#create'
+  get '/authors/:id/stories/new', to: 'story#new'
+  post '/authors/:id/stories', to: 'story#create'
 
   get '/authors', to: 'author#index'
-  get '/author/new', to: 'author#new'
-  get '/author/:id', to: 'author#show'
-  post '/author/new', to: 'author#create'
-  post '/author/:id', to: 'author#update'
-  delete '/author/delete', to: 'author#delete'
-  get '/author/:id/edit', to: 'author#edit'
-  get '/author/:id/stories', to: 'author#show_with_stories'
-  delete '/author/:id', to: 'author#delete'
+  get '/authors/new', to: 'author#new'
+  get '/authors/:id', to: 'author#show'
+  post '/authors/new', to: 'author#create'
+  post '/authors/:id', to: 'author#update'
+  delete '/authors/delete', to: 'author#delete'
+  get '/authors/:id/edit', to: 'author#edit'
+  get '/authors/:id/stories', to: 'author#show_with_stories'
+  delete '/authors/:id', to: 'author#delete'
 end

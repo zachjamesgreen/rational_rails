@@ -5,9 +5,11 @@ class StoryController < ApplicationController
 
   def create
     author = Author.find(params[:id])
-    published = params[:story][:published].nil? ? false : true
-    Story.create(name: params[:story][:name], likes: params[:story][:likes], published: published, author: author)
-    redirect_to "/author/#{author.id}/stories"
+    s = Story.new(story_params)
+    s.author = author
+    s.published = params[:story][:published].nil? ? false : true
+    s.save
+    redirect_to "/authors/#{author.id}/stories"
   end
 
   def edit
@@ -24,14 +26,20 @@ class StoryController < ApplicationController
 
   def update
     story = Story.find(params[:id])
-    published = params[:story][:published].nil? ? false : true
-    story.update(name: params[:story][:name], likes: params[:story][:likes], published: published)
-    redirect_to "/story/#{story.id}"
+    story_params[:published] = params[:story][:published].nil? ? false : true
+    story.update(story_params)
+    redirect_to "/stories/#{story.id}"
   end
 
   def delete
     story = Story.find(params[:id])
     story.delete
-    redirect_to '/story'
+    redirect_to '/stories'
+  end
+
+  private
+
+  def story_params
+    params.require(:story).permit(:name, :likes)
   end
 end

@@ -31,7 +31,7 @@ class AuthorController < ApplicationController
     author = Author.find(params[:id])
     admin = params[:author][:admin] == 'on'
     author.update({name: params[:author][:name], admin: admin})
-    redirect_to "/author/#{author.id}"
+    redirect_to "/authors/#{author.id}"
   end
 
   def delete
