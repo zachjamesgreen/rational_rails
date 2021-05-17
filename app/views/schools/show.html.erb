@@ -1,15 +1,54 @@
-<h2>School Record</h2>
-<h3>School ID: </h3><label><%=@school.id%></label>
-<h3>School Name: </h3><label><%=@school.name%></label>
-<h3>Number of Students: </h3><label><%=@school.students.length%></label>
-<h3>School Code: </h3><label><%=@school.school_code%></label>
-<h3>School is Remote? </h3><label><%=@school.remote?%></label><br /><br />
-<a href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br />
-<a href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br />
-<a href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br />
-<a href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a><br /><br />
-<form action='<%="/schools/#{@school.id}"%>' method='POST'>
-  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-  <input type='hidden' name='_method' value='DELETE' />
-  <input type='submit' value='Delete School' />
-</form>
+<br /><br /><br />
+<table id='school_table' class='model-list'>
+  <tr id='header_row' class='fs-3 pd-4 center-text'>
+    <th>
+      School ID
+      </th>
+    <th>
+      School Name
+      </th>
+    <th>
+      Number of Students
+      </th>
+    <th>
+      School Code
+      </th>
+    <th>
+      School Is Remote
+      </th>
+    </tr>
+    <tr id='school_attrs' class='fs-3 pd-4 center-text'>
+      <td id='school_id'>
+        <%=@school.id%>
+        </td>
+      <td id='school_name'>
+        <%=@school.name%>
+        </td>
+      <td id='student_count'>
+        <%=@school.students.count%>
+        </td>
+      <td id='school_code'>
+        <%=@school.school_code%>
+        </td>
+      <td id='school_is_remote'>
+        <%=@school.remote?%>
+        </td>
+      </tr>
+    <tr class='last-row'>
+      <td colspan='2'>
+        <a id='add_student_btn' class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
+        <a id='edit_school_btn' class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
+        <form action='<%="/schools/#{@school.id}"%>' method='POST'>
+          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
+          <input type='hidden' name='_method' value='DELETE' />
+          <input id='delete_school_btn' class='custom-button danger' type='submit' value='Delete School' />
+        </form>
+        </td>
+      <td>
+        <a id='view_students_btn' class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
+        <a id='view_degrees_btn' class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a>
+        </td>
+      <td colspan='2'>
+        </td>
+      </tr>
+  </table><br />

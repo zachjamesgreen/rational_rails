@@ -1,9 +1,27 @@
-<h1>List of All Students</h1>
+<h2 class='center-heading'>List of All Graduated Students</h2>
 
-<ul>
-    <%@students.each do |student| %>
-    <li>
-      <a href=<%="/students/#{student.id}"%>><%=student.name%></a> <a class='custom-button' href='<%="/students/#{student.id}/edit"%>'>Edit</a>
-    </li>
+<table id='students_table' class='model-list'>
+  <tr id='header_row'>
+    <th>
+      Student Name
+    </th>
+    <th>
+      Creation Date
+    </th>
+  </tr>
+  <%@students.each do |student| %>
+    <tr id='<%="student_data_row_#{student.id}"%>'>
+      <td>
+        <a class='td-selection-area' href=<%="/students/#{student.id}"%>><%=student.name%></a>
+        </td>
+      <td>
+        <%=student.created_at%>
+        </td>
+      </tr>
+    <tr class='last-row'>
+      <td colspan='2'>
+        <a id='<%="edit_student_#{student.id}_btn"%>' class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'>Edit</a>
+        </td>
+      </tr>
     <%end%>
-</ul>
+  </table>

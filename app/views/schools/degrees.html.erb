@@ -1,5 +1,5 @@
 <h2>Current Degrees being Pursued at <a href=<%="/schools/#{@school.id}"%>><%=@school.name%></a></h2>
-<ul>
+<ul class='degree-list'>
   <%@current_degrees.each do |degree|%>
     <li><%=degree%></li>
   <%end%>

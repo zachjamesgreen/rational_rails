@@ -41,28 +41,186 @@
   display: inline-block;
 }
 
-a.custom-button {
-  text-decoration: none;
-  text-align: center;
-  color: blue;
-  display: inline-block;
-  font-size: 16px;
-}
-
-a.custom-button:hover {
-  background-color: grey;
-  color: white;
-}
-
 .custom-button {
   border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .custom-button:hover {
   background-color: grey;
   color: white;
+  cursor: pointer;
+}
+
+.danger {
+  background-color: #e61300;
+  color: white;
+}
+
+.danger:hover {
+  background-color: #8f0c00;
+  color: white;
+  cursor: pointer;
+}
+
+.new {
+  background-color: #54cc60;
+  color: white;
+}
+
+.new:hover {
+  background-color: #02780e;
+  color: white;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: #4a8fff;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #104fb5;
+  color: white;
+  cursor: pointer;
+}
+
+.normal {
+  background-color: #35c0db;
+  color: white;
+}
+
+.normal:hover {
+  background-color: #096c80;
+  color: white;
+  cursor: pointer;
+}
+
+.model-list {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  border-collapse: collapse;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.model-list td, .model-list th {
+  border: 1px solid #ddd;
+}
+
+.model-list tr:nth-child(even){
+  background-color: #dbdbdb;
+}
+
+.last-row {
+  border: none;
+  background: white;
+}
+
+.last-row td {
+  border: none;
+  padding-bottom: 20px;
+  background: white;
+}
+
+.model-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #333;
+  color: white;
+}
+
+.model-list a.td-selection-area {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  width: 95%;
+  height: 100%;
+  padding: 8px;
+}
+
+.model-list a.td-selection-area:hover {
+  background-color: #8a8a8a;
+  color:white;
+  cursor: pointer;
+}
+
+.new-form input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.new-form input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-form input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.new-form-area {
+  width: 75%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.center-text td {
+  text-align: center;
+}
+
+.center-heading {
+  text-align: center;
+}
+
+.pd-1 td, th {
+  padding: 2px;
+}
+.pd-2 td, th {
+  padding: 4px;
+}
+.pd-3 td, th {
+  padding: 6px;
+}
+.pd-4 td, th {
+  padding: 8px;
+}
+
+.fs-1 {
+  font-size: 10px;
+}
+
+.fs-2 {
+  font-size: 14px;
+}
+
+.fs-3 {
+  font-size: 16px;
+}
+
+.fs-4 {
+  font-size: 20px;
 }

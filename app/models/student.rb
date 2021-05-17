@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-  belongs_to :school, optional: true
+  belongs_to :school
 
   def has_graduated?
     is_alumni?? 'Yes' : 'No'
