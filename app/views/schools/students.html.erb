@@ -5,7 +5,9 @@
       <form id='greater_than_age_form' action='<%="/schools/#{@school.id}/students"%>' method='POST'>
         <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
         <label for='count'>Get students older than</label>
-        <input type='number' name='age' />
+        <input type='number' name='age' value='<%=@age_clause%>'/>
+        <label for='sort_by_name'>Sort by name</label>
+        <input type='checkbox' name='sort_by_name' value='true' />
         <input id='submit_age_sort_btn' type='submit' value='Submit' />
       </form>
       </td>

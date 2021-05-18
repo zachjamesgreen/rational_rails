@@ -19,7 +19,7 @@ RSpec.describe 'The show student page,' do
     it 'has expected headers' do
       headers = page.find(:id, 'header_row').find_all('th')
 
-      expected_content = ['Student ID', 'Student Name', 'Age', 'Degree', 'Graduate']
+      expected_content = ['Student ID', 'Student Name', 'Age', 'Attending School', 'Degree', 'Graduate']
       seen_content = headers.map(&:text)
 
       expect(seen_content).to eq expected_content
@@ -29,6 +29,7 @@ RSpec.describe 'The show student page,' do
       expect(page.find(:id, 'student_id')).to have_content(@test_student.id)
       expect(page.find(:id, 'student_name')).to have_content(@test_student.name)
       expect(page.find(:id, 'student_age')).to have_content(@test_student.age)
+      expect(page.find(:id, 'student_school')).to have_content(@test_student.school.name)
       expect(page.find(:id, 'student_degree')).to have_content(@test_student.degree)
       expect(page.find(:id, 'student_graduated')).to have_content(@test_student.has_graduated?)
     end

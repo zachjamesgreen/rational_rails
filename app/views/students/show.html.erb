@@ -11,13 +11,16 @@
       Age
       </th>
     <th>
+      Attending School
+      </th>
+    <th>
       Degree
       </th>
     <th>
       Graduate
       </th>
     </tr>
-    <tr id='student_attrs' class='fs-3 pd-4 center-text'>
+    <tr id='student_attrs' class='fs-3 center-text'>
       <td id='student_id'>
         <%=@student.id%>
         </td>
@@ -26,6 +29,9 @@
         </td>
       <td id='student_age'>
         <%=@student.age%>
+        </td>
+      <td id='student_school'>
+        <a class='td-selection-area' href="/schools/<%=@student.school_id%>"><%=@student.school.name%></a>
         </td>
       <td id='student_degree'>
         <%=@student.degree%>
