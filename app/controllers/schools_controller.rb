@@ -33,6 +33,8 @@ class SchoolsController < ApplicationController
   def students
     @school = School.find(params[:id])
     @students = @school.students_by(params)
+    @age_clause = 18
+    @age_clause = params[:age] if params[:age]
   end
 
   def degrees
