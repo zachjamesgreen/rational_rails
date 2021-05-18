@@ -33,8 +33,9 @@ class SchoolsController < ApplicationController
   def students
     @school = School.find(params[:id])
     @students = @school.students_by(params)
-    @age_clause = 18
-    @age_clause = params[:age] if params[:age]
+    age_clause = params[:age]? params[:age] : 18
+    sort_by_name_checkbox = params[:sort_by_name]? true : false
+    @form_params = {age_clause: age_clause, sort_by_name_checkbox: sort_by_name_checkbox}
   end
 
   def degrees
