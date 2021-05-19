@@ -10,9 +10,9 @@
     </th>
   </tr>
   <%@students.each do |student| %>
-    <tr id='<%="student_data_row_#{student.id}"%>'>
+    <tr id='student_data_row_<%=student.id%>'>
       <td>
-        <a class='td-selection-area' href=<%="/students/#{student.id}"%>><%=student.name%></a>
+        <a class='td-selection-area' href='/students/<%=student.id%>'><%=student.name%></a>
         </td>
       <td>
         <%=student.created_at%>
@@ -20,7 +20,7 @@
       </tr>
     <tr class='last-row'>
       <td colspan='2'>
-        <a id='<%="edit_student_#{student.id}_btn"%>' class='custom-button edit' href='<%="/students/#{student.id}/edit"%>'>Edit</a>
+        <a id='edit_student_<%=student.id%>_btn' class='custom-button edit' href='/students/<%=student.id%>/edit'>Edit</a>
         </td>
       </tr>
     <%end%>

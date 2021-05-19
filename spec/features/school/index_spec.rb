@@ -67,7 +67,7 @@ RSpec.describe 'The school index page,' do
 
       it 'should be seen next to each school' do
         delete_button = @schools_table.find(:id, "delete_school_#{@test_school.id}_btn")
-        expect(delete_button.value).to eq('Delete')
+        expect(delete_button).to have_content('Delete')
       end
 
       it 'redirects the user to /schools and will no longer see the school listed' do
