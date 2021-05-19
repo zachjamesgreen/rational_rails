@@ -36,17 +36,13 @@
       </tr>
     <tr class='last-row'>
       <td colspan='2'>
-        <a id='add_student_btn' class='custom-button new' href='<%="/schools/#{@school.id}/students/new"%>'>Add new Student</a><br /><br />
-        <a id='edit_school_btn' class='custom-button edit' href='<%="/schools/#{@school.id}/edit"%>'>Update School</a><br /><br />
-        <form action='<%="/schools/#{@school.id}"%>' method='POST'>
-          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-          <input type='hidden' name='_method' value='DELETE' />
-          <input id='delete_school_btn' class='custom-button danger' type='submit' value='Delete School' />
-        </form>
+        <a id='add_student_btn' class='custom-button new' href='/schools/<%=@school.id%>/students/new'>Add new Student</a><br /><br />
+        <a id='edit_school_btn' class='custom-button edit' href='/schools/<%=@school.id%>/edit'>Update School</a><br /><br />
+        <a id='delete_school_btn' class='custom-button danger' data-method='delete' href='/schools/<%=@school.id%>'>Delete School</a>
         </td>
       <td>
-        <a id='view_students_btn' class='custom-button normal' href='<%="/schools/#{@school.id}/students"%>'>View List of Students</a><br /><br />
-        <a id='view_degrees_btn' class='custom-button normal' href='<%="/schools/#{@school.id}/degrees"%>'>Show List of Pursued Degrees</a>
+        <a id='view_students_btn' class='custom-button normal' href='/schools/<%=@school.id%>/students'>View List of Students</a><br /><br />
+        <a id='view_degrees_btn' class='custom-button normal' href='/schools/<%=@school.id%>/degrees'>Show List of Pursued Degrees</a>
         </td>
       <td colspan='2'>
         </td>
