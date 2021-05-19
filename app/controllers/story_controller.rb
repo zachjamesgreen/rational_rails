@@ -1,6 +1,8 @@
 class StoryController < ApplicationController
   def index
     @stories = Story.all.where(published: true)
+    @stories = @stories.where(name: params[:exact_match]) if params[:exact_match]
+    @stories = @stories.where('name ILIKE ?', "%#{params[:partial_match]}%") if params[:partial_match]
   end
 
   def create
