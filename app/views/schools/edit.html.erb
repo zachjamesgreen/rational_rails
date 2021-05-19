@@ -1,7 +1,7 @@
 <h2>Edit School <%=@school.name%></h2>
 
 <div class='new-form-area'>
-  <form class='new-form' action='<%="/schools/#{@school.id}/edit"%>' method='POST'>
+  <form class='new-form' action='/schools/<%=@school.id%>/edit' method='POST'>
     <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
     <input type='hidden' name='_method' value='PATCH' />
     <label for='school[name]'>Name of School</label>
