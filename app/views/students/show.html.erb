@@ -31,7 +31,7 @@
         <%=@student.age%>
         </td>
       <td id='student_school'>
-        <a class='td-selection-area' href="/schools/<%=@student.school_id%>"><%=@student.school.name%></a>
+        <a class='td-selection-area' href='/schools/<%=@student.school_id%>'><%=@student.school.name%></a>
         </td>
       <td id='student_degree'>
         <%=@student.degree%>
@@ -42,12 +42,8 @@
       </tr>
     <tr class='last-row'>
       <td colspan='5'>
-        <a id='edit_student_btn' class='custom-button edit' href='<%="/students/#{@student.id}/edit"%>'>Update Student</a><br /><br />
-        <form action='<%="/students/#{@student.id}"%>' method='POST'>
-          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-          <input type='hidden' name='_method' value='DELETE' />
-          <input id='delete_student_btn' class='custom-button danger' type='submit' value='Delete Student' />
-        </form>
+        <a id='edit_student_btn' class='custom-button edit' href='/students/<%=@student.id%>/edit'>Update Student</a><br /><br />
+        <a id='delete_student_btn' class='custom-button danger' data-method='delete' href='/students/<%=@student.id%>'>Delete Student</a>
         </td>
       </tr>
   </table>
