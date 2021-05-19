@@ -16,22 +16,18 @@
         </th>
       </tr>
     <%@schools.each do |school| %>
-    <tr id='<%="school_data_row_#{school.id}"%>'>
+    <tr id='school_data_row_<%=school.id%>'>
       <td>
-        <a class='td-selection-area' href=<%="/schools/#{school.id}"%>><%="#{school.name}"%></a>
+        <a class='td-selection-area' href='/schools/<%=school.id%>'><%=school.name%></a>
         </td>
       <td>
         <%=school.created_at%>
         </td>
     </tr>
-    <tr id='<%="button_row_#{school.id}"%>' class='last-row'>
+    <tr id='button_row_<%=school.id%>' class='last-row'>
       <td colspan='2'>
-        <a id='<%="edit_school_#{school.id}_btn"%>' class='custom-button edit' href='<%="/schools/#{school.id}/edit"%>'>Edit</a>
-        <form class='delete-form' action='<%="/schools/#{school.id}"%>' method='POST'>
-          <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-          <input type='hidden' name='_method' value='DELETE' />
-          <input id='<%="delete_school_#{school.id}_btn"%>' class='custom-button danger' type='submit' value='Delete' />
-        </form>
+        <a id='edit_school_<%=school.id%>_btn' class='custom-button edit' href='/schools/<%=school.id%>/edit'>Edit</a>
+        <a id='delete_school_<%=school.id%>_btn' class='custom-button danger' data-method='delete' href='/schools/<%=school.id%>'>Delete</a>
       </td>
       </tr>
     <%end%>
