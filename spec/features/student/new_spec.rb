@@ -15,28 +15,28 @@ RSpec.describe 'The new student page,' do
   end
 
   it 'has a title' do
-    expect(page.find('h2')).to be_present
-    expect(page.find('h2')).to have_content('Create new Student')
+    title = page.find('h2')
+    expect(title).to be_present
+    expect(title).to have_content('Create new Student')
+    expect(title).to appear_before(page.find('.new-form-area'))
   end
 
   describe 'form,' do
     it 'is present' do
-      expect(page.find('form')).to be_present
+      expect(page.find('.new-form')).to be_present
     end
 
     it 'has labels for each input' do
-      form = page.find('form')
-      labels = form.find_all('label')
-
-      expected_content = ['Student Name', 'Age', "Student's Degree", 'Has Student Graduated?']
-      actual_content = labels.map(&:text)
-
-      expect(actual_content).to eq expected_content
+      within '.new-form' do
+        expect(page).to have_content('Student Name')
+        expect(page).to have_content('Age')
+        expect(page).to have_content("Student's Degree")
+        expect(page).to have_content('Has Student Graduated?')
+      end
     end
 
     it 'has a submit button' do
-      form = page.find('form')
-      expect(form.find(:id, 'add_student_btn')).to be_present
+      expect(page.find('#add_student_btn')).to be_present
     end
   end
   describe 'submit button,' do
@@ -46,7 +46,7 @@ RSpec.describe 'The new student page,' do
       degree = Faker::Educator.degree
       is_alumni = rand(2)? 'Yes' : 'No'
 
-      within 'form' do
+      within '.new-form' do
         fill_in 'student[name]', with: student_name
         fill_in 'student[age]', with: student_age
         fill_in 'student[degree]', with: degree
@@ -57,8 +57,8 @@ RSpec.describe 'The new student page,' do
       new_student = School.first.students.first
 
       current_path.should eq "/schools/#{@test_school.id}/students"
-      expect(page.find(:id, "student_data_row_#{new_student.id}")).to have_content(student_name)
-      expect(page).to have_content(new_student.created_at)
+      expect(page.find("#student_data_row_#{new_student.id}")).to have_content(student_name)
+      expect(page).to have_content(new_student.created_at.to_s)
     end
   end
 end
