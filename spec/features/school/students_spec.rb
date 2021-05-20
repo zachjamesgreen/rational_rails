@@ -130,19 +130,14 @@ RSpec.describe 'The list of students for school,' do
         [student.name, student.created_at.to_s]
       end
 
-      student_data_rows = page.find('#student-table').find_all('tr')
-
-      actual_data_seen = student_data_rows.filter_map do |row|
-        table_data = row.find_all('td')
-        table_data.map(&:text) if table_data.length > 1
+      within '#student-table' do
+        expect(page).to have_content('Student Name')
+        expect(page).to have_content('Creation Date')
+        expected_data_seen.each do |student_row|
+          expect(page).to have_content(student_row[0])
+          expect(page).to have_content(student_row[1])
+        end
       end
-
-      expected_headers_seen = ['Student Name', 'Creation Date']
-
-      actual_headers_seen = student_data_rows.first.find_all('th').map(&:text)
-
-      expect(actual_data_seen).to eq expected_data_seen
-      expect(actual_headers_seen).to eq expected_headers_seen
     end
   end
 end
