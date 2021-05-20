@@ -15,17 +15,17 @@ RSpec.describe 'The show degrees page' do
     visit "/schools/#{@school.id}/degrees"
     degree_list = page.find('ul.degree-list')
 
-    expect(degree_list).to have_selector('li', count: 2)
+    within 'ul.degree-list' do
+      expect(page).to have_selector('li', count: 2)
+    end
   end
 
   it 'has a list of all pursued degrees for the selected school' do
     visit "/schools/#{@school.id}/degrees"
 
-    degree_list = page.find('ul.degree-list')
-    degrees_seen = degree_list.find_all('li').map(&:text)
-
-    expected_degrees = ['Computer Science', 'Geology']
-
-    expect(degrees_seen).to eq expected_degrees
+    within 'ul.degree-list' do
+      expect(page).to have_content('Computer Science')
+      expect(page).to have_content('Geology')
+    end
   end
 end
