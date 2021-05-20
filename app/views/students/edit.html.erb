@@ -1,19 +1,15 @@
 <h2>Edit Student <%=@student.name%></h2>
 
 <div class='new-form-area'>
-  <form class='new-form' action='/students/<%=@student.id%>/edit' method='POST'>
-    <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'>
-    <input type='hidden' name='_method' value='PATCH' />
-    <label for='student[name]'>Student Name</label>
-    <input id='student_name' type='text' name='student[name]' value='<%=@student.name%>'/><br />
-    <label for='student[age]'>Age</label>
-    <input id='student_age' type='text' name='student[age]' value='<%=@student.age%>'/><br />
-    <label for='student[degree]' name='student[degree]'>Student's Degree</label>
-    <input id='student_degree' type='text' name='student[degree]' value='<%=@student.degree%>'/><br />
-    <label for='student[is_alumni]'>Student is Alumni</label>
-    <select id='student_is_alumni' name='student[is_alumni]'>
-      <%=current_option(@student.is_alumni)%>
-    </select><br />
-    <input id='submit_button' type='submit' value='Update'/>
-  </form>
+  <%= form_with local: true,  url: "/students/#{@student.id}", method: :patch, class: 'new-form' do |form| %>
+    <%= label :student, :name, 'Student Name'%>
+    <%= text_field :student, :name %>
+    <%= label :student, :age, 'Age' %>
+    <%= text_field :student, :age %>
+    <%= label :student, :degree, "Student's Degree" %>
+    <%= text_field :student, :degree %>
+    <%= label :student, :is_alumni, 'Student is Alumni' %>
+    <%= select :student, :is_alumni, [['Yes', 'true'], ['No', 'false']], selected: @student.is_alumni? %>
+    <%= form.submit %>
+  <% end %>
   </div>
