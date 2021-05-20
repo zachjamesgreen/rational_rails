@@ -11,12 +11,11 @@ RSpec.describe 'The school edit page' do
   end
 
   it 'shows a title with the school name' do
-    School.all.each do |school|
-      visit "/schools/#{school.id}/edit"
+    visit "/schools/#{@turing_school.id}/edit"
+    page_title = page.find('h2')
 
-      page_title = page.find('h2')
-      expect(page_title).to have_content("Edit School #{school.name}")
-    end
+    expect(page_title).to have_content("Edit School #{@turing_school.name}")
+    expect(page_title).to appear_before(page.find('.new-form-area'))
   end
 
   describe 'edit form,' do
@@ -29,13 +28,17 @@ RSpec.describe 'The school edit page' do
     end
 
     it 'has populated fields of the school' do
-      School.all.each do |school|
-        visit "/schools/#{school.id}/edit"
+      visit "/schools/#{@turing_school.id}/edit"
 
-        expect(page.find(:id, 'school_name').value).to eq(school.name)
-        expect(page.find(:id, 'school_code').value).to eq(school.school_code.to_s)
-        expect(page.find(:id, 'school_is_remote').value).to eq(school.is_remote.to_s)
-      end
+      expect(page.find('#school_name').value).to eq(@turing_school.name)
+      expect(page.find('#school_code').value).to eq(@turing_school.school_code.to_s)
+      expect(page.find('#school_is_remote').value).to eq(@turing_school.is_remote.to_s)
+
+      visit "/schools/#{@msu_school.id}/edit"
+
+      expect(page.find('#school_name').value).to eq(@msu_school.name)
+      expect(page.find('#school_code').value).to eq(@msu_school.school_code.to_s)
+      expect(page.find('#school_is_remote').value).to eq(@msu_school.is_remote.to_s)
     end
 
     it 'navigates back to the edited school when form is submitted with new data visible' do
@@ -43,7 +46,7 @@ RSpec.describe 'The school edit page' do
 
       within 'form' do
         fill_in 'school[name]', with: new_name
-        find(:id, 'submit_button').click
+        find('#submit_button').click
       end
 
       current_path.should eq "/schools/#{@turing_school.id}"
