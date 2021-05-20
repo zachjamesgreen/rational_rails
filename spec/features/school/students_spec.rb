@@ -34,22 +34,22 @@ RSpec.describe 'The list of students for school,' do
 
   describe 'get students greater than given age form,' do
     it 'can be seen at the top of the list of students' do
-      expect(page.find(:id, 'greater_than_age_form')).to be_present
+      expect(page.find('#greater_than_age_form')).to be_present
     end
 
     describe 'submission button,' do
       it 'submits request and shows new list of students based on given query value' do
-        submit_button = page.find(:id, 'submit_age_sort_btn')
-        form = page.find(:id, 'greater_than_age_form')
+        submit_button = page.find('#submit_age_sort_btn')
+        form = page.find('#greater_than_age_form')
         greater_than_age = Student.maximum(:age) - 5
 
         within form do
           fill_in 'age', with: greater_than_age
-          find(:id, 'submit_age_sort_btn').click
+          find('#submit_age_sort_btn').click
         end
 
         expected_student_count = Student.where(school_id: @test_school.id).where("age > #{greater_than_age}").count
-        student_table = page.find(:id, 'student-table')
+        student_table = page.find('#student-table')
         actual_student_count = (student_table.find_all('tr').length - 1) / 2
 
         expect(actual_student_count).to eq expected_student_count
@@ -61,14 +61,14 @@ RSpec.describe 'The list of students for school,' do
     describe 'student name,' do
       it 'has the name of the student' do
         Student.all.each do |student|
-          expect(page.find(:id, "view_student_#{student.id}")).to be_present
-          expect(page.find(:id, "view_student_#{student.id}")).to have_content(student.name)
+          expect(page.find("#view_student_#{student.id}")).to be_present
+          expect(page.find("#view_student_#{student.id}")).to have_content(student.name)
         end
       end
 
       it 'redirects to /students/:id' do
         student = @test_school.students.first
-        view_student_button = page.find(:id, "view_student_#{student.id}")
+        view_student_button = page.find("#view_student_#{student.id}")
 
         view_student_button.click
 
@@ -79,13 +79,13 @@ RSpec.describe 'The list of students for school,' do
     describe 'Edit student,' do
       it 'can be seen next to each student' do
         student = @test_school.students.first
-        expect(page.find(:id, "edit_student_#{student.id}")).to be_present
-        expect(page.find(:id, "edit_student_#{student.id}")).to have_content('Edit')
+        expect(page.find("#edit_student_#{student.id}")).to be_present
+        expect(page.find("#edit_student_#{student.id}")).to have_content('Edit')
       end
 
       it 'redirects to /students/:id/edit' do
         student = @test_school.students.first
-        view_student_button = page.find(:id, "edit_student_#{student.id}")
+        view_student_button = page.find("#edit_student_#{student.id}")
 
         view_student_button.click
 
@@ -97,13 +97,13 @@ RSpec.describe 'The list of students for school,' do
       it 'can be seen next to each student' do
         student = @test_school.students.first
 
-        expect(page.find(:id, "delete_student_#{student.id}")).to be_present
-        expect(page.find(:id, "delete_student_#{student.id}").value).to eq('Delete')
+        expect(page.find("#delete_student_#{student.id}")).to be_present
+        expect(page.find("#delete_student_#{student.id}").value).to eq('Delete')
       end
 
       it 'deletes student and redirects to /schools/:id/students' do
         student = @test_school.students.first
-        view_student_button = page.find(:id, "delete_student_#{student.id}")
+        view_student_button = page.find("#delete_student_#{student.id}")
 
         view_student_button.click
 
@@ -112,17 +112,14 @@ RSpec.describe 'The list of students for school,' do
 
       it 'the deleted student no longer is shown in list' do
         student = @test_school.students.first
-        view_student_button = page.find(:id, "view_student_#{student.id}")
-        delete_student_button = page.find(:id, "delete_student_#{student.id}")
+        view_student_button = page.find("#view_student_#{student.id}")
+        delete_student_button = page.find("#delete_student_#{student.id}")
 
         expect(view_student_button).to have_content(student.name)
 
         delete_student_button.click
 
-        student = @test_school.students.first
-        view_student_button = page.find(:id, "view_student_#{student.id}")
-
-        expect(view_student_button).to have_content(student.name)
+        expect(page).not_to have_content(student.name)
       end
     end
   end
@@ -133,7 +130,7 @@ RSpec.describe 'The list of students for school,' do
         [student.name, student.created_at.to_s]
       end
 
-      student_data_rows = page.find(:id, 'student-table').find_all('tr')
+      student_data_rows = page.find('#student-table').find_all('tr')
 
       actual_data_seen = student_data_rows.filter_map do |row|
         table_data = row.find_all('td')
