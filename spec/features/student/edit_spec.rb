@@ -16,10 +16,11 @@ RSpec.describe 'the student edit' do
     end
 
     it 'shows a title with the student name' do
-      expect(page.find('h2')).to be_present
-      expect(page.find('h2')).to have_content("Edit Student #{@student.name}")
+      title = page.find('h2')
+      expect(title).to be_present
+      expect(title).to have_content("Edit Student #{@student.name}")
+      expect(title).to appear_before(page.find('form'))
     end
-
 
     describe 'form' do
       it 'is present' do
@@ -27,20 +28,19 @@ RSpec.describe 'the student edit' do
       end
 
       it 'has labels for each input' do
-        form = page.find('form')
-        labels = form.find_all('label')
-
-        expected_content = ['Student Name', 'Age', "Student's Degree", 'Student is Alumni']
-        actual_content = labels.map(&:text)
-
-        expect(actual_content).to eq expected_content
+        within 'form' do
+          expect(page).to have_content('Student Name')
+          expect(page).to have_content('Age')
+          expect(page).to have_content("Student's Degree")
+          expect(page).to have_content('Student is Alumni')
+        end
       end
 
       it 'has populated fields of the student' do
-        expect(page.find(:id, 'student_name').value).to eq(@student.name)
-        expect(page.find(:id, 'student_age').value).to eq(@student.age.to_s)
-        expect(page.find(:id, 'student_degree').value).to eq(@student.degree)
-        expect(page.find(:id, 'student_is_alumni').value).to eq(@student.is_alumni.to_s)
+        expect(page.find('#student_name').value).to eq(@student.name)
+        expect(page.find('#student_age').value).to eq(@student.age.to_s)
+        expect(page.find('#student_degree').value).to eq(@student.degree)
+        expect(page.find('#student_is_alumni').value).to eq(@student.is_alumni.to_s)
       end
 
       it 'navigates back to the edited student when form is submitted' do
@@ -54,7 +54,7 @@ RSpec.describe 'the student edit' do
 
         current_path.should eq "/students/#{@student.id}"
 
-        expect(page.find(:id, 'student_name')).to have_content(new_name)
+        expect(page.find('#student_name')).to have_content(new_name)
       end
     end
   end
