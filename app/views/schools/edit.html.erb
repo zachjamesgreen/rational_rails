@@ -3,9 +3,9 @@
 <div class='new-form-area'>
   <%= form_with local: true, url: "/schools/#{@school.id}/edit", method: :patch, class: 'new-form' do |form| %>
     <%= label :school, :name, 'School Name' %>
-    <%= text_field :school, :name, value: @school.name %>
+    <%= text_field :school, :name %>
     <%= label :school, :school_code, 'School Code' %>
-    <%= text_field :school, :school_code, value: @school.school_code %>
+    <%= text_field :school, :school_code %>
     <%= label :school, :is_remote, 'Is the School Remote?' %>
     <%= select :school, :is_remote, [['Yes', 'true'],['No', 'false']], selected: @school.is_remote? %>
     <%= form.submit 'Update' %>
