@@ -11,28 +11,28 @@ RSpec.describe 'The new school page,' do
   end
 
   it 'has a title' do
-    expect(page.find('h2')).to be_present
-    expect(page.find('h2')).to have_content('Create a new School')
+    title = page.find('h2')
+    expect(title).to be_present
+    expect(title).to have_content('Create a new School')
+    expect(title).to appear_before(page.find('.new-form-area'))
   end
 
   describe 'form,' do
     it 'is present' do
-      expect(page.find('form')).to be_present
+      expect(page.find('.new-form')).to be_present
     end
 
     it 'has labels for each input' do
-      form = page.find('form')
-      labels = form.find_all('label')
-
-      expected_content = ['Name of School', 'School Code', 'Is the School Remote?']
-      actual_content = labels.map(&:text)
-
-      expect(actual_content).to eq expected_content
+      within '.new-form' do
+        expect(page).to have_content('Name of School')
+        expect(page).to have_content('School Code')
+        expect(page).to have_content('Is the School Remote?')
+      end
     end
 
     it 'has a submit button' do
-      form = page.find('form')
-      expect(form.find(:id, 'add_school_btn')).to be_present
+      form = page.find('.new-form')
+      expect(form.find('#add_school_btn')).to be_present
     end
   end
   describe 'submit button,' do
@@ -51,8 +51,8 @@ RSpec.describe 'The new school page,' do
       new_school = School.all.first
 
       current_path.should eq '/schools'
-      expect(page.find(:id, "school_data_row_#{new_school.id}")).to have_content(school_name)
-      expect(page.find(:id, "school_data_row_#{new_school.id}")).to have_content(new_school.created_at)
+      expect(page.find("#school_data_row_#{new_school.id}")).to have_content(school_name)
+      expect(page.find("#school_data_row_#{new_school.id}")).to have_content(new_school.created_at.to_s)
     end
   end
 end
