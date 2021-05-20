@@ -49,7 +49,7 @@ RSpec.describe 'the student edit' do
 
         within 'form' do
           fill_in 'student[name]', with: new_name
-          find(:id, 'submit_button').click
+          click_button
         end
 
         current_path.should eq "/students/#{@student.id}"

@@ -31,13 +31,13 @@ RSpec.describe 'The school edit page' do
       visit "/schools/#{@turing_school.id}/edit"
 
       expect(page.find('#school_name').value).to eq(@turing_school.name)
-      expect(page.find('#school_code').value).to eq(@turing_school.school_code.to_s)
+      expect(page.find('#school_school_code').value).to eq(@turing_school.school_code.to_s)
       expect(page.find('#school_is_remote').value).to eq(@turing_school.is_remote.to_s)
 
       visit "/schools/#{@msu_school.id}/edit"
 
       expect(page.find('#school_name').value).to eq(@msu_school.name)
-      expect(page.find('#school_code').value).to eq(@msu_school.school_code.to_s)
+      expect(page.find('#school_school_code').value).to eq(@msu_school.school_code.to_s)
       expect(page.find('#school_is_remote').value).to eq(@msu_school.is_remote.to_s)
     end
 
@@ -46,7 +46,7 @@ RSpec.describe 'The school edit page' do
 
       within 'form' do
         fill_in 'school[name]', with: new_name
-        find('#submit_button').click
+        click_button
       end
 
       current_path.should eq "/schools/#{@turing_school.id}"
